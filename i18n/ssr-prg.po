@@ -1,0 +1,504 @@
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2024-05-16 20:01+0000\n"
+"Last-Translator: Negru Berg <denisfagetan975@gmail.com>\n"
+"Language-Team: Prussian <https://hosted.weblate.org/projects/pixelplanet/"
+"server/prg/>\n"
+"Language: prg\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n % 10 == 0 || n % 100 >= 11 && n % 100 <= "
+"19) ? 0 : ((n % 10 == 1 && n % 100 != 11) ? 1 : 2);\n"
+"X-Generator: Weblate 5.6-dev\n"
+
+#: src/core/ChatProvider.js:434
+msgid "You can not send chat messages while using a proxy"
+msgstr "jūs mazītwei ni sendelītun čats waīstis ikkai jūs tērpa proxy"
+
+#: src/core/ChatProvider.js:436
+msgid "Your country is temporary muted from this chat channel"
+msgstr "twajs tāutā ast kēsmingisks dussaws iz čats"
+
+#: src/core/ChatProvider.js:439
+msgid "You are permanently muted, join our guilded to appeal the mute"
+msgstr "jūs stwi permanēnts dussaws, sendātun nūss discord prēi enwakīsenis"
+
+#: src/core/ChatProvider.js:441
+msgid "You are banned"
+msgstr "jūs stwi ni preiwērptun"
+
+#: src/core/ChatProvider.js:443
+msgid "Your Internet Provider is banned"
+msgstr "twajs internettan ast ni preiwērptun"
+
+#: src/core/ChatProvider.js:448
+#, javascript-format
+msgid "You are muted for another ${ timeMin } minutes"
+msgstr "twajs stwi dussaws kits ${ timeMin } minūti"
+
+#: src/core/ChatProvider.js:450
+#, javascript-format
+msgid "You are muted for another ${ ttl } seconds"
+msgstr "twajs stwi dusswas kits ${ ttl } āntars"
+
+#: src/core/ChatProvider.js:467
+#, javascript-format
+msgid "You are sending messages too fast, you have to wait ${ waitTime }s :("
+msgstr ""
+"twajs stwi waīstis pēr pastenīks, twajs papaltwei prēi gēistwei "
+"${ waitTime } āntars :("
+
+#: src/core/ChatProvider.js:471
+msgid "You don't have access to this channel"
+msgstr "twajs segītun turri preiēisenis šāi"
+
+#: src/core/ChatProvider.js:490
+msgid "Your mail has to be verified in order to chat"
+msgstr "twajs pōstikastens turri būtwei izbandāi pluškītwei"
+
+#: src/core/ChatProvider.js:500
+msgid "You can't send a message this long :("
+msgstr "jūs mazzi ni tenginna waīstis šis ilgai"
+
+#: src/core/ChatProvider.js:504
+msgid "Please use int channel"
+msgstr "tērpaui int kanāls"
+
+#: src/core/ChatProvider.js:512
+msgid "Stop flooding."
+msgstr "stāminadeīktan tenginna."
+
+#: src/routes/reset_password.js:39
+msgid "You sent an empty password or invalid data :("
+msgstr "jūs tenginna pāusts dātan :("
+
+#: src/routes/reset_password.js:51
+msgid "This password-reset link isn't valid anymore :("
+msgstr "šis kliptaswīrds etkraūt-link ni ast gilaūt :("
+
+#: src/routes/reset_password.js:62
+msgid "Your passwords do not match :("
+msgstr "twajs kliptaswīrds ni segītun passaut :("
+
+#: src/routes/reset_password.js:77
+msgid "User doesn't exist in our database :("
+msgstr "tērpautajs ni enkāupja ekzistijja ēntran nūss dātanbazi :("
+
+#: src/routes/reset_password.js:89
+msgid "Password successfully changed."
+msgstr "kliptaswīrds izpalewīngis kitawīdina."
+
+#: src/routes/reset_password.js:108
+msgid "Invalid url :( Please check your mail again."
+msgstr "inwalīdi url :( izbāndātun twajs pōstikastens etkūmps."
+
+#: src/ssr/Globe.jsx:37
+msgid "PixelPlanet.Fun 3DGlobe"
+msgstr "PixelPlanet.Fun 3D planēta"
+
+#: src/ssr/Globe.jsx:38
+msgid "A 3D globe of our whole map"
+msgstr "3D planēta tāutaskarti"
+
+#: src/ssr/Globe.jsx:51
+msgid "Double click on globe to go back."
+msgstr "dweīsun sprakstinna planēta izēitwei."
+
+#: src/ssr/Globe.jsx:52
+msgid "Loading..."
+msgstr "kraūwusi..."
+
+#: src/ssr/PopUp.jsx:47
+msgid "ppfun"
+msgstr "ppfun"
+
+#: src/ssr/PopUp.jsx:48
+msgid "PixelPlanet.Fun PopUp"
+msgstr "PixelPlanet.Fun reklāmi"
+
+#: src/ssr/Main.jsx:68
+msgid "PixelPlanet.Fun"
+msgstr "PixelPlanet.Fun"
+
+#: src/ssr/Main.jsx:69
+msgid "Place color pixels on an map styled canvas with other players online"
+msgstr "deīktan barwinsnas pikselāi tāutaskarti stīlan drābi sēn kitāi online"
+
+#: src/utils/validation.js:17
+msgid "Email can't be empty."
+msgstr "pōstikastens ni mazītwei bēi pāusts."
+
+#: src/utils/validation.js:18
+msgid "Email should be at least 5 characters long."
+msgstr "pōstikastens turri ēnwangan 5 dabbas."
+
+#: src/utils/validation.js:19
+msgid "Email can't be longer than 40 characters."
+msgstr "pōstikastens ni mazzi bēi ilgai nikāi 40 dabbas."
+
+#: src/utils/validation.js:20
+msgid "Email should at least contain a dot"
+msgstr "pōstikastens turri mazzais \".\""
+
+#: src/utils/validation.js:22
+msgid "Email should contain a @"
+msgstr "pōstikastens turri \"@\""
+
+#: src/utils/validation.js:29
+msgid "Name can't be empty."
+msgstr "emmens ni mazzi bēi pāusts."
+
+#: src/utils/validation.js:30
+msgid "Name must be at least 2 characters long"
+msgstr "emmens papalla būtwei mazzais 2 dabbas ilgai"
+
+#: src/utils/validation.js:31
+msgid "Name must be shorter than 26 characters"
+msgstr "emmens papalla būtwei mazzais nikāi 26 dabbas"
+
+#: src/utils/validation.js:38
+msgid "Name contains invalid character like @, /, \\ or #"
+msgstr "emmens turri inwalīdi dabbas tēt dīgi @,/,\\ adder #"
+
+#: src/utils/validation.js:53
+msgid "No password given."
+msgstr "ni kliptaswīrds dāts."
+
+#: src/utils/validation.js:56
+msgid "Password must be at least 6 characters long."
+msgstr "kliptaswīrds papalla ast mazzais 6 dabbas ilgai."
+
+#: src/utils/validation.js:59
+msgid "Password must be shorter than 60 characters."
+msgstr "kliptaswīrds papalla ast mazzais nikāi 60 dabbas."
+
+#: src/ssr/PasswordReset.jsx:20 src/ssr/PasswordReset.jsx:40
+msgid "PixelPlanet.fun Password Reset"
+msgstr "PixelPlanet.fun kliptaswīrds etkraūt"
+
+#: src/ssr/PasswordReset.jsx:21 src/ssr/PasswordReset.jsx:41
+msgid "Reset your password here"
+msgstr "etkraūtun twajs kliptaswīrds šāi"
+
+#: src/core/MailProvider.js:105 src/ssr/PasswordReset.jsx:28
+#: src/ssr/PasswordReset.jsx:49
+msgid "Reset Password"
+msgstr "etkraūtun kliptaswīrds"
+
+#: src/ssr/PasswordReset.jsx:30 src/ssr/RedirectionPage.jsx:12
+msgid "Click here"
+msgstr "sprakstinna šāi"
+
+#: src/ssr/PasswordReset.jsx:30
+msgid "to go back to pixelplanet"
+msgstr "izēitwei iz pixelplanet"
+
+#: src/ssr/PasswordReset.jsx:50
+#, javascript-format
+msgid "Hello ${ name }, you can set your new password here:"
+msgstr "kaīls ${ name }, jūsizklìptina sadinna twajs nāuns kliptaswīrds šāi:"
+
+#: src/ssr/PasswordReset.jsx:54
+msgid "New Password"
+msgstr "nāuns kliptaswīrds"
+
+#: src/ssr/PasswordReset.jsx:60
+msgid "Confirm New Password"
+msgstr "padrūktina nāuns kliptaswīrds"
+
+#: src/ssr/PasswordReset.jsx:65
+msgid "Submit"
+msgstr "paklusta"
+
+#: src/routes/api/modtools.js:53
+msgid "You are not logged in"
+msgstr "jūs ni ast senrissa"
+
+#: src/routes/api/modtools.js:65
+msgid "You are not allowed to access this page"
+msgstr "jūs assei ni preiwērpt prēi preiēisenis šis pāusan"
+
+#: src/routes/api/modtools.js:209
+msgid "Just admins can do that"
+msgstr "Ka tēr Deiwāi mazzi segēi stas"
+
+#: src/routes/api/baninfo.js:32
+msgid "You are not banned"
+msgstr "jūs assei ni ni preiwērpt"
+
+#: src/routes/api/auth/register.js:27
+msgid "No Captcha given"
+msgstr "Ni Captcha dāwusi"
+
+#: src/routes/api/auth/register.js:30
+msgid "E-Mail already in use."
+msgstr "Pōstikastens jāu tērpau."
+
+#: src/routes/api/auth/register.js:32
+msgid "Username already in use."
+msgstr "emmens jāu tērpau."
+
+#: src/routes/api/auth/register.js:55
+msgid "You took too long, try again."
+msgstr "jūs izlaīdja pēr tūlan kērdā, bānda etkūmps."
+
+#: src/routes/api/auth/register.js:58
+msgid "You failed your captcha"
+msgstr "jūs praspīli twajs captcha"
+
+#: src/routes/api/auth/register.js:61
+msgid "Please refresh the website"
+msgstr ""
+
+#: src/routes/api/auth/register.js:64
+msgid "Unknown Captcha Error"
+msgstr "Niwaīsts Captcha Error"
+
+#: src/routes/api/auth/change_mail.js:22 src/routes/api/auth/register.js:70
+msgid "This email provider is not allowed"
+msgstr "šis pōstikastens ni ast preiwērpja"
+
+#: src/routes/api/auth/register.js:92
+msgid "Failed to create new user :("
+msgstr "praspīli kurtun nāuns tērpautajs :("
+
+#: src/routes/api/auth/register.js:108
+msgid "Failed to establish session after register :("
+msgstr "praspīli gruntintun sīndausnā pa registrijja"
+
+#: src/routes/api/auth/verify.js:26 src/routes/api/auth/verify.js:35
+msgid "Mail verification"
+msgstr "pōstikastens izbānda"
+
+#: src/routes/api/auth/verify.js:27
+msgid "You are now verified :)"
+msgstr "jūs ast teinū izbānda :)"
+
+#: src/routes/api/auth/verify.js:35
+msgid ""
+"Your mail verification code is invalid or already expired :(, please request "
+"a new one."
+msgstr ""
+"twajs pōstikastens izbānda ast inwalīdi adder izdwesis:, madla nāuns ainā."
+
+#: src/routes/api/auth/logout.js:11
+msgid "You are not even logged in."
+msgstr "jūs ni ast īr sāitas."
+
+#: src/routes/api/auth/delete_account.js:65 src/routes/api/auth/logout.js:20
+msgid "Server error when logging out."
+msgstr "sērweris blānda kaddan ausijjusi."
+
+#: src/routes/api/auth/change_mail.js:44
+#: src/routes/api/auth/change_passwd.js:34
+#: src/routes/api/auth/delete_account.js:36
+msgid "You are not authenticated."
+msgstr "jūs ni ast izbānda."
+
+#: src/routes/api/auth/change_mail.js:53
+#: src/routes/api/auth/change_passwd.js:43
+#: src/routes/api/auth/delete_account.js:55
+msgid "Incorrect password!"
+msgstr "blāndewingis kliptaswīrds!"
+
+#: src/routes/api/auth/delete_account.js:46
+msgid "Muted Users can not delete their account."
+msgstr "Dussaws tērpautajai ni izklìptina audrazza kōnts."
+
+#: src/routes/api/auth/change_mail.js:62
+msgid "Muted Users can not do this."
+msgstr "Dussaws tērpautajai ni izklìptina segēi šis."
+
+#: src/ssr/RedirectionPage.jsx:19
+msgid "PixelPlanet.fun Accounts"
+msgstr "PixelPlanet.fun kōntai"
+
+#: src/ssr/RedirectionPage.jsx:29
+msgid "You will be automatically redirected after 15s"
+msgstr "jūs ast ēisei assei autōmatiska pabanginna pa 15s"
+
+#: src/ssr/RedirectionPage.jsx:30
+#, javascript-format
+msgid "Or ${ clickHere } to go back to pixelplanet"
+msgstr "adder ${ clickHere } skassa pixelplanet"
+
+#: src/canvasesDesc.js:20
+msgid "Earth"
+msgstr "zemē"
+
+#: src/canvasesDesc.js:21
+msgid "Moon"
+msgstr "mēniks"
+
+#: src/canvasesDesc.js:22
+msgid "3D Canvas"
+msgstr "3D drābi"
+
+#: src/canvasesDesc.js:23
+msgid "Coronavirus"
+msgstr "Coronavirus"
+
+#: src/canvasesDesc.js:24
+msgid "PixelZone"
+msgstr "PikselanZōni"
+
+#: src/canvasesDesc.js:25
+msgid "PixelCanvas"
+msgstr "PikselanDrābi"
+
+#: src/canvasesDesc.js:26
+msgid "1bit"
+msgstr "1bit"
+
+#: src/canvasesDesc.js:27
+msgid "Top10"
+msgstr "Wīrss10"
+
+#: src/canvasesDesc.js:28
+msgid "2bit"
+msgstr "2bit"
+
+#: src/canvasesDesc.js:29
+msgid "Minimap"
+msgstr "MiniTāutaskarti"
+
+#: src/canvasesDesc.js:32
+msgid "Our main canvas, a huge map of the world. Place anywhere you like!"
+msgstr ""
+"nūss gruntisks drābi, aīns spanga tāutaskarti pēr stā swētan. pastatinna "
+"wiskwēi!"
+
+#: src/canvasesDesc.js:33
+msgid ""
+"Moon canvas. Safe space for art. No flags or large text (unless part of art) "
+"or art larger than 1.5k x 1.5k pixels."
+msgstr ""
+"Mēniks drābi. Sārgus plattibi pēr kunsta. ni karjangus adder dabbars teksts "
+"adder kunsta māisess nikāi 1.5k x 1.5k pikselāi."
+
+#: src/canvasesDesc.js:34
+msgid "Place Voxels on a 3D canvas with others."
+msgstr "deīktan 3D pikselāi aīns."
+
+#: src/canvasesDesc.js:35
+msgid "Special canvas to spread awareness of SARS-CoV2 (take the vax)."
+msgstr "Speciāls drābi paplattintun aumenewīngiskan pēr SARS-CoV2."
+
+#: src/canvasesDesc.js:36
+msgid "Mirror of PixelZone"
+msgstr "Spīgelis pēr PixelZone"
+
+#: src/canvasesDesc.js:37
+msgid "Mirror of PixelCanvas"
+msgstr "Spīgelis pēr PixelCanvas"
+
+#: src/canvasesDesc.js:38
+msgid "Black and White canvas"
+msgstr "aulaūwuns drābi"
+
+#: src/canvasesDesc.js:39
+msgid ""
+"A canvas for the most active players from the the previous day. Daily "
+"ranking updates at 00:00 UTC."
+msgstr ""
+"Drābi pēr stā māisisk aktīws spīleniks ezze stā pirzdaums dēinā. Dēinins "
+"wīrss ernaunīnusi prēi 00:00 UTC."
+
+#: src/canvasesDesc.js:40
+msgid "Only four colors. Same rules as moon!"
+msgstr "Tēr ketturjai bārwis. Stawīds pat rēgulas kāigi mēniks, tēt dīgi!"
+
+#: src/canvasesDesc.js:41
+msgid ""
+"Conquer land on a smaller earth with protected ocean. Shares cooldown with "
+"earth canvas!"
+msgstr "Erkarjaūwusi zemē na mazs zemē. Dalljawusi cd sēn spanga drābi!"
+
+#: src/core/MailProvider.js:66
+#, javascript-format
+msgid "Welcome ${ name } to PixelPlanet, please verify your mail"
+msgstr "Kaīls ${ name } prēi PixelPlanet, izbānda twajs pōstikastens"
+
+#: src/core/MailProvider.js:67
+#, javascript-format
+msgid "Hello ${ name }"
+msgstr "Kaīls ${ name }"
+
+#: src/core/MailProvider.js:68
+msgid ""
+"welcome to our little community of pixelplacers, to use your account, you "
+"have to verify your mail. You can do that here: "
+msgstr ""
+"Kaīls prēi nūss pērā pēr pikselan deiktammans, tērpautun twajs kōnts, jūs "
+"papalla izbāndātun twajs pōstikastens. jūs mazzi segēi stas šāi: "
+
+#: src/core/MailProvider.js:68
+msgid "Click to Verify"
+msgstr "sprakstinna prēi izbāndātun"
+
+#: src/core/MailProvider.js:68 src/core/MailProvider.js:105
+msgid "Or by copying following url:"
+msgstr "Adder prēi kōpiwusi repīnts url:"
+
+#: src/core/MailProvider.js:69
+msgid ""
+"Have fun and don't hesitate to contact us if you encounter any problems :)"
+msgstr ""
+"Turri deiwūts be ni segēi swirrina prēi kōntakts mes ik jūs ebtīnka ainunts "
+"prōbleman :)"
+
+#: src/core/MailProvider.js:70 src/core/MailProvider.js:107
+msgid "Thanks"
+msgstr "Dīnka"
+
+#: src/core/MailProvider.js:87
+#, javascript-format
+msgid ""
+"We already sent you a verification mail, you can request another one in "
+"${ minLeft } minutes."
+msgstr ""
+"Mes jāu tenginnimai jūs izbandāwusi pōstikastens, jūs mazzi madla kits ēn "
+"${ minLeft } minūtis."
+
+#: src/core/MailProvider.js:103
+msgid "You forgot your password for PixelPlanet? Get a new one here"
+msgstr ""
+"Tū assei izmīrsuns twajs PixelPlanet kliptaswīrds? Gaūnja nāuns kliptaswīrds "
+"šāi"
+
+#: src/core/MailProvider.js:104
+msgid "Hello"
+msgstr "Kaīls"
+
+#: src/core/MailProvider.js:105
+msgid ""
+"You requested to get a new password. You can change your password within the "
+"next 30min here: "
+msgstr ""
+"Jūs izkīninsenju gaūtun nāuns kliptaswīrds. Jūs mazzi kitawīdina twajs "
+"kliptaswīrds ēntrai repīnts 30min šāi: "
+
+#: src/core/MailProvider.js:106
+#, javascript-format
+msgid ""
+"If you did not request this mail, please just ignore it (the ip that "
+"requested this mail was ${ ip })."
+msgstr ""
+"Ik jūs ni segīwuns izkīninsenis šis pōsti, ka tēr ignōri di (izkīninsenis "
+"tengīnuns ezze ${ ip })."
+
+#: src/core/MailProvider.js:114
+msgid "Mail is not configured on the server"
+msgstr "Pōsti ni ast kōnfiguracijas nō sērweris"
+
+#: src/core/MailProvider.js:122
+msgid ""
+"We already sent you a mail with instructions. Please wait before requesting "
+"another mail."
+msgstr ""
+"Mes jāu tengīnusis jūs aīns pōsti sēn palaipīnsnas. Gēidja pirzdau "
+"izkīninsensis kits pōsti."
+
+#: src/core/MailProvider.js:130
+msgid "Couldn't find this mail in our database"
+msgstr "Mazītwei ni aupaltun šis pōsti ēntran nūss dātanbazi"

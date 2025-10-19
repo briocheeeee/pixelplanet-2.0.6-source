@@ -1,0 +1,85 @@
+.channeldd,
+.contextmenu {
+  border-radius: 8px;
+}
+
+.window {
+  border-radius: 5px;
+}
+
+.chntop {
+  margin-top: 4px;
+}
+
+.actionbuttons,
+.coorbox,
+.onlinebox,
+.cooldownbox,
+.historyselect {
+  border-radius: 21px;
+}
+
+.actionbuttons,
+.coorbox {
+  background: linear-gradient(45deg, orange, yellow, green, aqua, blue, violet);
+  border-radius: 10px;
+}
+
+.ti.menu > div:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.timestamp-chip {
+  background-color: transparent;
+  color: inherit;
+}
+.timestamp-chip .timestamp-tooltip {
+  background-color: #ffffff;
+  color: #1a1a1a;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+html .timestamp-tooltip-floating {
+  background-color: #ffffff;
+  color: #1a1a1a;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.modal {
+  border-radius: 21px;
+}
+
+.Alert {
+  border-radius: 12px;
+}
+
+.notifybox {
+  border-radius: 21px;
+}
+
+.brush-preset {
+  background: rgba(255, 255, 255, 0.6);
+  color: #1a1a1a;
+  border-color: #c5c5c5;
+  border-radius: 12px;
+}
+.brush-preset.active {
+  outline-color: #4a8af4;
+}
+.brush-mini-grid > div {
+  background: #e0e0e0;
+}
+.brush-mini-grid > div.on {
+  background: #1a1a1a;
+}
+.brush-editor .cell {
+  background: #e0e0e0;
+  border-color: #c5c5c5;
+}
+.brush-editor .cell.on {
+  background: #1a1a1a;
+}
+.brush-card.custom-active {
+  align-items: flex-start;
+}

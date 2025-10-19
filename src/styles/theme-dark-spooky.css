@@ -1,0 +1,402 @@
+body {
+  font-weight: bold;
+}
+
+.tab-list {
+  border-bottom: 1px solid #a50029;
+}
+
+.tab-list-item:not(.active):hover {
+  background-color: #6a8ed1;
+}
+
+.tab-list-item.active {
+  background-color: #0743b2;
+  color: #ffffff;
+  border: solid #a50029;
+}
+
+td,
+th {
+  border: 1px solid #f0f;
+}
+
+h2 {
+  color: #fffacd;
+  font-weight: bold;
+}
+
+h3 {
+  color: #ffc2c2;
+  font-weight: bold;
+}
+
+.win-resize {
+  color: #cbcbcb;
+}
+
+h4 {
+  color: #ffc2c2;
+  font-weight: Bold;
+  font-size: 20px;
+}
+
+.win-title {
+  border: solid #330033;
+  background-color: #b20707;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.win-title:hover {
+  background-color: #dc660e;
+}
+
+.win-topbtn {
+  border: solid #330033;
+  background-color: #827000;
+  color: white;
+}
+
+.win-topbtn:hover {
+  background-color: #92b0e8;
+}
+
+.win-topbtn.close:hover {
+  background-color: #92b0e8;
+}
+
+.contextmenu {
+  background-color: rgba(0, 0, 0);
+  border: solid;
+  color: #000;
+  box-shadow: 0 0 7px 7px rgba(0, 0, 0, 0.1);
+}
+
+.contextmenu > div {
+  background-color: #0743b2;
+  border-top: thin solid #ffffff;
+  color: #ffffff;
+}
+
+.contextmenu > div:hover {
+  background-color: #92b0e8;
+}
+
+tr:nth-child(even) {
+  background-color: #3b3618;
+}
+tr:nth-child(odd) {
+  background-color: #380a0c;
+}
+
+.channelbtn {
+  background-color: #ce0000;
+  border-color: black;
+  color: #fff;
+}
+
+.cvbtn:hover {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.channeldd {
+  background-color: #4b0a0a;
+}
+
+.onlinebox {
+  background-color: rgba(206, 0, 0, 0.8);
+}
+
+.cooldownbox {
+  background-color: rgba(255, 255, 255, 0.8);
+  color: black;
+}
+
+#palettebox {
+  background-color: rgb(99 16 16 / 80%);
+}
+
+.actionbuttons,
+.coorbox {
+  background-color: rgb(206 92 0 / 80%);
+  color: black;
+}
+
+.deletelistitem.selected {
+  background-color: #8c5e5e;
+}
+
+.deletelistitem.unselected:hover {
+  background-color: #7d5f5f;
+}
+
+.menu > div {
+  background-color: rgb(238, 255, 255);
+}
+
+#helpbutton {
+  background-color: rgb(112 0 0 / 80%);
+  color: white;
+}
+
+#settingsbutton {
+  background-color: rgb(162 0 0 / 80%);
+}
+
+#loginbutton {
+  background-color: rgb(112 0 0 / 80%);
+  color: white;
+}
+
+#downloadbutton {
+  background-color: rgb(162 0 0 / 80%);
+}
+
+#chatbutton {
+  background-color: rgb(162 0 0 / 80%);
+  color: white;
+}
+
+.historyselect {
+  background-color: rgba(7, 67, 178, 0.8);
+  color: white;
+}
+
+#helpbutton:hover,
+#settingsbutton:hover,
+#loginbutton:hover,
+#downloadbutton:hover,
+#chatbutton:hover {
+  background-color: #ff1818f2;
+}
+
+.modal,
+.Alert {
+  background: rgb(68, 2, 2);
+  background-image: url(/pumpkin-texture.png);
+  background-size: cover;
+  color: #cb4646;
+}
+
+.window,
+.popup {
+  background: rgb(28, 2, 2);
+  background: linear-gradient(
+    180deg,
+    rgba(93, 9, 9, 1) 0%,
+    rgba(28, 2, 2, 1) 10%,
+    rgba(28, 2, 2, 1) 90%,
+    rgba(93, 9, 9, 1) 100%
+  );
+}
+
+.modal-content,
+.win-content,
+.popup-content,
+.baninfo {
+  font-size: 19px;
+  font-weight: bold;
+  color: #cb4646;
+}
+
+.modaldesc {
+  color: #e2e2e2;
+}
+
+.modaldivider {
+  background-color: hsla(300, 96%, 40%, 0.3); /*pink*/
+}
+
+.modallink {
+  color: #7da8ff;
+}
+
+.modalinfo,
+.tmpitm-desc span {
+  color: #c9abab;
+  font-size: 20px;
+  font-weight: 500, bold;
+}
+
+.modalcvtext,
+.tmpitm-desc {
+  color: #e2e2e2;
+}
+
+.modal-topbtn {
+  background-color: #0743b2;
+  color: white;
+}
+
+.overlay {
+  background-color: rgba(255, 255, 204, 0.4);
+}
+
+.chatname {
+  max-width: 115px;
+  background-color: inherit;
+}
+
+.mention {
+  background-color: #3f380f;
+}
+
+.chatts {
+  color: #b38b8b;
+}
+
+.chatmsg:hover {
+  background-color: #692a2a;
+}
+
+.msg {
+  color: #f0f0f0;
+}
+
+.msg:hover {
+  color: #ffffff;
+}
+
+.msg.info {
+  color: #ce0000;
+}
+
+.msg.event {
+  color: #0743b2;
+}
+
+.msg.greentext {
+  color: #00cc00;
+}
+
+.ping {
+  background-color: #eb9999;
+}
+
+.chn {
+  background-color: #ce0000;
+  border-bottom: solid bold #ff00ff;
+  padding: 3px;
+  font-size: 17px;
+}
+
+.chn.selected,
+.chn:hover,
+.channelbtn.selected,
+.channelbtn:hover,
+#sendbtn:hover {
+  background-color: #363637;
+}
+
+.brush-preset {
+  background: rgba(40, 40, 40, 0.4);
+  color: #e6e6e6;
+  border-color: #5a5a5a;
+}
+.brush-preset.active {
+  outline-color: #4a8af4;
+}
+.brush-mini-grid > div {
+  background: #3a3a3a;
+}
+.brush-mini-grid > div.on {
+  background: #e6e6e6;
+}
+.brush-editor .cell {
+  background: #3a3a3a;
+  border-color: #5a5a5a;
+}
+.brush-editor .cell.on { background: #e6e6e6; }
+.brush-card.custom-active { align-items: flex-start; }
+
+#sendbtn {
+  background-color: #ce0000;
+  color: white;
+}
+
+.chntype {
+  background-color: #0743b2;
+  color: white;
+}
+
+.chntype.selected,
+.chntype:hover {
+  background-color: #92b0e8;
+}
+
+.statvalue {
+  color: #ff49ff;
+}
+
+.actionbuttons:hover,
+.onlinebox:hover,
+.menu > div:hover {
+  background-color: #ff1818f2;
+}
+
+.coorbox:hover {
+  background-color: #ffec80cc;
+}
+
+.onlinebox:hover {
+  background-color: #e26666cc;
+}
+
+.react-toggle-track {
+  background-color: #ce0000;
+}
+
+.react-toggle:hover:not(.react-toggle--disabled) .react-toggle-track {
+  background-color: #ffd900;
+}
+
+.react-toggle--checked .react-toggle-track {
+  background-color: #0743b2;
+}
+
+.react-toggle--checked:hover:not(.react-toggle--disabled) .react-toggle-track {
+  background-color: #ffd900;
+}
+
+.c-last-hour {
+  color: lime;
+}
+
+.AnnouncementBar {
+  background: linear-gradient(
+    180deg,
+    rgba(93, 9, 9, 1) 0%,
+    rgba(28, 2, 2, 1) 100%
+  );
+  color: #cb4646;
+  border-radius: 10px;
+}
+.AnnouncementBar.var-info {
+  border-left-color: #7da8ff;
+}
+.AnnouncementBar.var-success {
+  border-left-color: #00cc00;
+}
+.AnnouncementBar.var-warning {
+  border-left-color: #ffd900;
+}
+.AnnouncementBar.var-error {
+  border-left-color: #ce0000;
+}
+
+.timestamp-chip {
+  background-color: transparent;
+  color: inherit;
+}
+.timestamp-chip .timestamp-tooltip {
+  background-color: #2b0f0f;
+  color: #ffdede;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+}
+
+.timestamp-tooltip-floating {
+  background-color: #2b0f0f;
+  color: #ffdede;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+}

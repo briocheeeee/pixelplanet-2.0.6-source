@@ -1,0 +1,193 @@
+tr:nth-child(even) {
+  background-color: #61dcea;
+}
+
+tr:nth-child(odd) {
+  background-color: #ffb1e1;
+}
+
+.actionbuttons,
+.onlinebox,
+.cooldownbox,
+.historyselect,
+.notifybox {
+  background: linear-gradient(
+    0deg,
+    #61dcea,
+    #ffb1e1,
+    #ecffec,
+    #ffb1e1,
+    #61dcea
+  );
+  border-radius: 10px;
+}
+
+.overlay {
+  background: linear-gradient(
+    175deg,
+    #61dceaab,
+    #ffb1e1,
+    #ecffec,
+    #ffb1e1,
+    #61dceaab
+  );
+}
+
+.chatname {
+  background: linear-gradient(
+    0deg,
+    #61dcea,
+    #ffb1e1,
+    #ecffec,
+    #ffb1e1,
+    #61dcea
+  );
+}
+.msg.info {
+  color: #ff91a6;
+}
+
+.window,
+.popup {
+  background: linear-gradient(
+    1deg,
+    #61dcea,
+    #ffb1e1,
+    #ecffec,
+    #fff9b1,
+    #61dcea
+  );
+}
+
+.actionbuttons:hover,
+.menu > div:hover,
+.channeldd,
+.contextmenu {
+  background: linear-gradient(
+    160deg,
+    #61dcea,
+    #ffb1e1,
+    #ecffec,
+    #ffb1e1,
+    #61dcea
+  );
+}
+
+.chn,
+.chntype,
+.contextmenu > div {
+  background-color: #ebebeb80;
+}
+
+#chatbutton {
+  background: linear-gradient(
+    135deg,
+    orange,
+    yellow,
+    green,
+    aqua,
+    blue,
+    violet
+  );
+}
+
+#chatbutton:hover {
+  background: linear-gradient(45deg, orange, yellow, green, aqua, blue, violet);
+}
+
+.coorbox {
+  background: linear-gradient(45deg, orange, yellow, green, aqua, blue, violet);
+  border-radius: 10px;
+}
+
+.coorbox:hover {
+  background: linear-gradient(
+    135deg,
+    orange,
+    yellow,
+    green,
+    aqua,
+    blue,
+    violet
+  );
+}
+
+.modal {
+  background: #f4edf0 none repeat scroll 0 0;
+  background-image: url("../jew.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 10px;
+}
+
+.Alert {
+  background: #f4edf0 none repeat scroll 0 0;
+  border-radius: 7px;
+}
+
+.AnnouncementBar {
+  background: linear-gradient(
+    0deg,
+    #61dcea,
+    #ffb1e1,
+    #ecffec,
+    #ffb1e1,
+    #61dcea
+  );
+  color: #1a1a1a;
+  border-radius: 10px;
+}
+.AnnouncementBar.var-info {
+  border-left-color: #61dcea;
+}
+.AnnouncementBar.var-success {
+  border-left-color: #3fae5a;
+}
+.AnnouncementBar.var-warning {
+  border-left-color: #ffa14c;
+}
+.AnnouncementBar.var-error {
+  border-left-color: #ce0000;
+}
+
+.timestamp-chip {
+  background-color: transparent;
+  color: inherit;
+}
+.timestamp-chip .timestamp-tooltip {
+  background-color: #ffffff;
+  color: #1a1a1a;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+html .timestamp-tooltip-floating {
+  background-color: #ffffff;
+  color: #1a1a1a;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.brush-preset {
+  background: rgba(255, 255, 255, 0.6);
+  color: #1a1a1a;
+  border-color: #c5c5c5;
+}
+.brush-preset.active {
+  outline-color: #4a8af4;
+}
+.brush-mini-grid > div {
+  background: #e0e0e0;
+}
+.brush-mini-grid > div.on {
+  background: #1a1a1a;
+}
+.brush-editor .cell {
+  background: #e0e0e0;
+  border-color: #c5c5c5;
+}
+.brush-editor .cell.on {
+  background: #1a1a1a;
+}
+.brush-card.custom-active {
+  align-items: flex-start;
+}

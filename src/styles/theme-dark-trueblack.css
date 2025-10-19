@@ -1,0 +1,258 @@
+a:link {
+  color: #7de3ff;
+}
+
+a:visited {
+  color: #b0ff87;
+}
+
+a:hover {
+  color: #e6ff8a;
+}
+
+.modallink {
+  color: #7de3ff;
+}
+
+.modallink:hover {
+  color: #e6ff8a;
+}
+
+.inarea {
+  border-color: #2a2a2a;
+}
+
+.tab-list-item {
+  color: #e6e6e6;
+}
+.tab-list-item.active {
+  background-color: #111111;
+  color: #ffffff;
+}
+.tab-list-item:not(.active):hover {
+  background-color: #0d0d0d;
+}
+
+tr:nth-child(even) {
+  background-color: #0f0f0f;
+}
+
+.window,
+.popup {
+  background-color: rgba(0, 0, 0, 0.98);
+  color: #f4f4f4;
+}
+
+.win-title {
+  background-color: #1a1a1a;
+}
+
+.win-topbar,
+.modal-topbtn {
+  color: #f4f4f4;
+}
+
+.win-title:hover {
+  background-color: #222222;
+}
+
+.win-topbtn,
+.modal-topbtn {
+  background-color: #1f1f1f;
+}
+
+.win-topbtn:hover,
+.modal-topbtn:hover {
+  background-color: #2a2a2a;
+}
+
+.actionbuttons,
+.coorbox,
+.onlinebox,
+.cooldownbox,
+.palettebox,
+.historyselect {
+  background-color: rgba(0, 0, 0, 0.85);
+  color: #f4f4f4;
+}
+
+#pencilbutton.ppencil {
+  background-color: rgba(131, 147, 19, 0.85);
+}
+#pencilbutton.phistory {
+  background-color: rgba(31, 84, 111, 0.85);
+}
+#pencilbutton.poverlay {
+  background-color: rgba(117, 31, 31, 0.85);
+}
+
+.menu > div {
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.82);
+}
+
+.modal,
+.Alert {
+  background: #000000;
+  color: #f4f4f4;
+}
+
+.deletelistitem.selected {
+  background-color: #5a2f2f;
+}
+
+.deletelistitem.unselected:hover {
+  background-color: #4a2f2f;
+}
+
+.modal-content,
+.win-content,
+.popup-content,
+.baninfo {
+  color: #f4f4f4;
+}
+
+h3,
+h4 {
+  color: #e1eaff;
+}
+
+.modaldesc {
+  color: hsla(220, 100%, 95.3%, 0.7);
+}
+
+.modaldivider {
+  background-color: hsla(0, 0%, 60%, 0.25);
+}
+
+.channeldd,
+.contextmenu {
+  background-color: #0f0f0f;
+  color: #efefef;
+}
+
+.chn,
+.chntype,
+.contextmenu > div {
+  background-color: #121212;
+}
+
+.chn.selected,
+.chn:hover,
+.chntype.selected,
+.chntype:hover,
+.contextmenu > div:hover {
+  background-color: #1a1a1a;
+}
+
+.modalinfo,
+.tmpitm-desc span {
+  color: #dddddd;
+}
+
+.modalcvtext,
+.tmpitm-desc {
+  color: hsla(220, 100%, 95.3%, 0.7);
+}
+
+.overlay {
+  background-color: rgba(180, 180, 180, 0.7);
+}
+
+.chatname {
+  background-color: #111315;
+}
+.mention {
+  background-color: #151311;
+}
+.chatmsg:hover {
+  background-color: #11111155;
+}
+.msg {
+  color: #f1f1f1;
+}
+.msg.info {
+  color: #ff91a6;
+}
+.msg.event {
+  color: #9dc8ff;
+}
+.msg.greentext {
+  color: #94ff94;
+}
+.ebex {
+  color: #fff4bd;
+}
+
+.chatlink {
+  color: #ffe6c7;
+}
+
+.statvalue {
+  color: #e9b7ff;
+}
+
+.actionbuttons:hover,
+.onlinebox:hover,
+.coorbox:hover,
+.menu > div:hover {
+  background-color: #0b0b0b;
+  box-shadow: 2px 2px #ff6b6b29;
+}
+
+.brush-preset {
+  background: rgba(0, 0, 0, 0.4);
+  color: #e6e6e6;
+  border-color: #2a2a2a;
+}
+.brush-preset.active {
+  outline-color: #4a8af4;
+}
+.brush-mini-grid > div {
+  background: #111111;
+}
+.brush-mini-grid > div.on {
+  background: #e6e6e6;
+}
+.brush-editor .cell {
+  background: #0f0f0f;
+  border-color: #2a2a2a;
+}
+.brush-editor .cell.on {
+  background: #e6e6e6;
+}
+.brush-card.custom-active {
+  align-items: flex-start;
+}
+
+.c-last-hour {
+  color: lime;
+}
+
+.AnnouncementBar {
+  background-color: rgba(0, 0, 0, 0.96);
+  color: #f4f4f4;
+}
+.AnnouncementBar.var-info {
+  border-left-color: #7de3ff;
+}
+.AnnouncementBar.var-success {
+  border-left-color: #94ff94;
+}
+.AnnouncementBar.var-warning {
+  border-left-color: #fff4bd;
+}
+.AnnouncementBar.var-error {
+  border-left-color: #ff91a6;
+}
+
+.timestamp-chip {
+  background-color: transparent;
+  color: inherit;
+}
+html .timestamp-tooltip-floating {
+  background-color: #0f0f0f;
+  color: #f0f0f0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  border: 1px solid #222222;
+}

@@ -1,0 +1,1777 @@
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2024-05-14 19:42+0000\n"
+"Last-Translator: FOXHELL <foxhell768@gmail.com>\n"
+"Language-Team: Irish <https://hosted.weblate.org/projects/pixelplanet/client/"
+"ga/>\n"
+"Language: ga\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=5; plural=n==1 ? 0 : n==2 ? 1 : (n>2 && n<7) ? 2 :"
+"(n>6 && n<11) ? 3 : 4;\n"
+"X-Generator: Weblate 5.6-dev\n"
+
+#: src/controls/keypress.js:102
+#, javascript-format
+msgid "Switched to ${ canvasName }"
+msgstr "athrú go dtí ${ canvasName }"
+
+#: src/controls/keypress.js:176
+msgid "Grid ON"
+msgstr "Cuirtear eangach ar"
+
+#: src/controls/keypress.js:177
+msgid "Grid OFF"
+msgstr "Múch an greille"
+
+#: src/controls/keypress.js:187
+msgid "Pixel Notify ON"
+msgstr "picteilin fógra a thabhairt"
+
+#: src/controls/keypress.js:188
+msgid "Pixel Notify OFF"
+msgstr "Múch an picteilin fógra a thabhairt"
+
+#: src/controls/keypress.js:193
+msgid "Muted Sound"
+msgstr "Balbh fuaim"
+
+#: src/controls/keypress.js:194
+msgid "Unmuted Sound"
+msgstr "fuaim neamhbhalbh"
+
+#: src/components/CoordinatesBox.jsx:39 src/components/GetIID.jsx:51
+#: src/controls/keypress.js:203
+msgid "Copied"
+msgstr "Cóipeál"
+
+#: src/controls/keypress.js:209
+msgid "Overlay ON"
+msgstr "Tá forleagan ar"
+
+#: src/controls/keypress.js:210
+msgid "Overlay OFF"
+msgstr "Múch an forleagan"
+
+#: src/components/windows/Help.jsx:50 src/controls/keypress.js:216
+msgid "Easter Egg ON"
+msgstr "Ubh Cháisc"
+
+#: src/components/windows/Help.jsx:49 src/controls/keypress.js:217
+msgid "Easter Egg OFF"
+msgstr "Múch an Ubh Cháisc"
+
+#: src/ui/PixelTransferController.js:70 src/ui/PixelTransferController.js:165
+msgid "Timeout"
+msgstr "am istigh"
+
+#: src/ui/PixelTransferController.js:72 src/ui/PixelTransferController.js:167
+msgid ""
+"Didn't get an answer from pixelplanet. Try to refresh if this problem "
+"persists."
+msgstr ""
+"Ní bhfuair muid freagra ó pixelplanet. Déan iarracht athnuachan a dhéanamh "
+"má leanann an fhadhb seo"
+
+#: src/ui/PixelTransferController.js:104
+msgid "Invalid Canvas"
+msgstr "chanbhás neamhbhailí"
+
+#: src/ui/PixelTransferController.js:105
+msgid "This canvas doesn't exist"
+msgstr "níl an chanbhás seo ann"
+
+#: src/ui/PixelTransferController.js:108 src/ui/PixelTransferController.js:112
+#: src/ui/PixelTransferController.js:116
+msgid "Invalid Coordinates"
+msgstr "comhordaitheach neamhbhailí"
+
+#: src/ui/PixelTransferController.js:109
+msgid "x out of bounds"
+msgstr "x thar teorainn"
+
+#: src/ui/PixelTransferController.js:113
+msgid "y out of bounds"
+msgstr "y thar teorainn"
+
+#: src/ui/PixelTransferController.js:117
+msgid "z out of bounds"
+msgstr "z thar teorainn"
+
+#: src/ui/PixelTransferController.js:120
+msgid "Wrong Color"
+msgstr "níl an ceart dathanna"
+
+#: src/ui/PixelTransferController.js:121
+msgid "Invalid color selected"
+msgstr "Ní dath ceart é seo"
+
+#: src/ui/PixelTransferController.js:124
+msgid "Just for registered Users"
+msgstr "Ní ach do Úsáideoirí síneadh isteach"
+
+#: src/ui/PixelTransferController.js:125
+msgid "You have to be logged in to place on this canvas"
+msgstr "Caithfidh tú beidh síneadh isteach le baint úsáid as an Canbháis seo"
+
+#: src/ui/PixelTransferController.js:128 src/ui/PixelTransferController.js:144
+#: src/ui/PixelTransferController.js:148
+msgid "Not allowed"
+msgstr "Níl cead"
+
+#: src/ui/PixelTransferController.js:130
+msgid "You can not access this canvas yet, because your pixel score is too low"
+msgstr ""
+"Níl tú ábalta baint úsáid as an canbháis seo, mar níl do scóir mór go leor"
+
+#: src/ui/PixelTransferController.js:133
+msgid "Pixel protected"
+msgstr "picteilíní sabhailte"
+
+#: src/ui/PixelTransferController.js:140
+msgid "Please prove that you are human"
+msgstr "Tábhar fianaise gur é duine thú"
+
+#: src/ui/PixelTransferController.js:145
+msgid "You are using a Proxy."
+msgstr "Tá tú ag baint úsáide as Proxy."
+
+#: src/ui/PixelTransferController.js:149
+msgid "Just the Top10 of yesterday can place here"
+msgstr "Is féidir an Barr10 Don la inné a cuir anseo"
+
+#: src/ui/PixelTransferController.js:152
+msgid "You are weird"
+msgstr "Is duine aisteach tú"
+
+#: src/ui/PixelTransferController.js:154
+msgid ""
+"Server got confused by your pixels. Are you playing on multiple devices?"
+msgstr ""
+"Fuair an freastalaí mearbhall ar do picteilíní. An bhfuil tú ag imirt ar "
+"níos mó na gléas amhain?"
+
+#: src/ui/PixelTransferController.js:157
+msgid "Banned"
+msgstr "Cuirtear amach"
+
+#: src/ui/PixelTransferController.js:161
+msgid "Range Banned"
+msgstr "Cuirtear amach mar gheal ar an raon"
+
+#: src/ui/PixelTransferController.js:162
+msgid "Your Internet Provider is banned from this game"
+msgstr "Cuirtear cosc ar do soláthraí idirlín ón cliocha seo"
+
+#: src/ui/PixelTransferController.js:170
+msgid "Weird"
+msgstr "Aisteach"
+
+#: src/ui/PixelTransferController.js:171
+msgid "Couldn't set Pixel"
+msgstr "Ní féidir picteilíní a cuir isteach"
+
+#: src/ui/PixelTransferController.js:176
+#, javascript-format
+msgid "Error ${ retCode }"
+msgstr "Earráid ${ retCode }"
+
+#: src/store/actions/thunks.js:227
+msgid "Pencil picks: "
+msgstr "Rogha Pheann Luidhe "
+
+#: src/components/windows/Settings.jsx:66 src/store/actions/thunks.js:230
+msgid "Selected Color"
+msgstr "Dath a Roghnaigh Tú"
+
+#: src/components/windows/Settings.jsx:66 src/store/actions/thunks.js:233
+msgid "From Template"
+msgstr "Ón Teimpléad"
+
+#: src/components/windows/Settings.jsx:67 src/store/actions/thunks.js:236
+msgid "From History"
+msgstr "Ón stair"
+
+#: src/ui/rendererFactory.js:32
+msgid "Canvas Error"
+msgstr "earráid chanbhás"
+
+#: src/ui/rendererFactory.js:33
+msgid "Can't render 3D canvas, do you have WebGL2 disabled?"
+msgstr ""
+"Ní féidir chanbhás 3D a dhéanamh, an bhfuil WebGL2 agat faoi mhíchumas?"
+
+#: src/ui/templateLoader.js:230 src/ui/templateLoader.js:256
+msgid "Error :("
+msgstr "earráid :("
+
+#: src/ui/templateLoader.js:231
+msgid "Can not export more than 20 or no template!"
+msgstr "Ní féidir a onnmhairiú níos mó ná 20 nó Níl aon teimpléad!"
+
+#: src/ui/templateLoader.js:257
+msgid "Can not import more than 20 or no template!"
+msgstr "Ní féidir a allmhairiú níos mó ná 20 nó Níl aon teimpléad!"
+
+#: src/components/BanInfo.jsx:132 src/store/actions/index.js:7
+msgid "OK"
+msgstr "Maith go Leor"
+
+#: src/store/actions/index.js:19
+#, fuzzy
+msgid "Change Happened"
+msgstr "Cuirtear amach mar gheal ar an raon"
+
+#: src/store/actions/index.js:19
+msgid "Please refresh the website"
+msgstr ""
+
+#: src/store/actions/fetch.js:55
+msgid "You made too many requests"
+msgstr "Rinne tú med raibh Mór don iarratais"
+
+#: src/store/actions/fetch.js:59
+#, javascript-format
+msgid "try again after ${ ti }min"
+msgstr "Cuirtear Tráil arís i ndiaidh ${ ti } Bom"
+
+#: src/store/actions/fetch.js:70
+#, javascript-format
+msgid "Connection error ${ code } :("
+msgstr "Earráid Ceangal ${ code }:("
+
+#: src/store/actions/fetch.js:103 src/store/actions/fetch.js:129
+msgid "Could not connect to server, please try again later :("
+msgstr ""
+"Ní raibh muid ábalta ceangail leis an freastalaí, Tráil Arís níos Moille:("
+
+#: src/store/actions/fetch.js:151 src/store/actions/fetch.js:170
+#: src/store/actions/fetch.js:189 src/store/actions/fetch.js:208
+#: src/store/actions/fetch.js:227
+msgid "Unknown Error"
+msgstr "Earráid nach bhfuil ar eolas"
+
+#: src/store/actions/fetch.js:237
+msgid "Server answered with gibberish :("
+msgstr "Freagair an freastalaí le gibirise"
+
+#: src/store/middleware/notifications.js:33
+msgid "Your next pixels are ready"
+msgstr "Tá do picteilíní eile réidh"
+
+#: src/store/middleware/notifications.js:37
+msgid "You can now place more on pixelplanet.fun :)"
+msgstr "Is féidir leat a chur anois níos mó ar pixelplanet.fun :)"
+
+#: src/store/middleware/notifications.js:54
+msgid "mentioned you"
+msgstr "Lughaidh sé tú"
+
+#: src/store/middleware/notifications.js:58
+msgid "You have new messages in chat"
+msgstr "Tá tú teachtaireachtaí nua sa comhrá"
+
+#: src/components/Converter.jsx:566 src/components/CoordinatesBox.jsx:42
+#: src/components/ModWatchtools.jsx:388 src/components/ModWatchtools.jsx:406
+msgid "Copy to Clipboard"
+msgstr "Cóip chun Bórd Coipailí"
+
+#: src/components/OnlineBox.jsx:56
+msgid "Online Users on Canvas"
+msgstr "Úsáideoirí ar líne ar an Canbhás"
+
+#: src/components/OnlineBox.jsx:71
+msgid "Total Online Users"
+msgstr "Úsáideoirí ar líne san Iomlán"
+
+#: src/components/OnlineBox.jsx:84 src/components/UserAreaContent.jsx:79
+msgid "Placed Pixels"
+msgstr "Picteilíní cuirtha"
+
+#: src/components/OnlineBox.jsx:92 src/components/Rankings.jsx:159
+msgid "Today"
+msgstr "Inniu"
+
+#: src/components/OnlineBox.jsx:92 src/components/Rankings.jsx:150
+msgid "Total"
+msgstr "San iomlán"
+
+#: src/components/buttons/CanvasSwitchButton.jsx:20
+#: src/components/windows/index.js:20
+msgid "Canvas Selection"
+msgstr "Rogha Canbhás"
+
+#: src/components/buttons/ChatButton.jsx:79
+msgid "Close Chat"
+msgstr "Comhrá Droidte"
+
+#: src/components/buttons/ChatButton.jsx:79
+msgid "Open Chat"
+msgstr "Comhrá Oscailte"
+
+#: src/components/buttons/ExpandMenuButton.jsx:22
+msgid "Close Menu"
+msgstr "roghchlár droidte"
+
+#: src/components/buttons/ExpandMenuButton.jsx:22
+msgid "Open Menu"
+msgstr "Roghchlár Oscailte"
+
+#: src/components/HistorySelect.jsx:156
+msgid "Loading"
+msgstr "Lódáil"
+
+#: src/components/HistorySelect.jsx:157
+msgid "Select Date above"
+msgstr "Roghnaigh Dáta thuas"
+
+#: src/components/Admintools.jsx:103 src/components/ModCanvastools.jsx:227
+#: src/components/ModWatchtools.jsx:118 src/components/Window.jsx:157
+#: src/components/Window.jsx:260
+#: src/components/contextmenus/ChannelContextMenu.jsx:59
+msgid "Close"
+msgstr "Droid"
+
+#: src/components/Window.jsx:173
+msgid "PopUp"
+msgstr "PopUp"
+
+#: src/components/Window.jsx:184
+msgid "Restore"
+msgstr "Ath Cruthaigh"
+
+#: src/components/Window.jsx:221
+msgid "Clone"
+msgstr "Clón"
+
+#: src/components/Window.jsx:229
+msgid "Move"
+msgstr "Bóg"
+
+#: src/components/Window.jsx:252
+msgid "Maximize"
+msgstr "Uasmhéid"
+
+#: src/components/Window.jsx:268
+msgid "Resize"
+msgstr "Athraigh méid"
+
+#: src/components/BanInfo.jsx:75 src/components/buttons/HelpButton.jsx:20
+#: src/components/windows/index.js:14
+msgid "Help"
+msgstr "Cuideadh"
+
+#: src/components/buttons/LogInButton.jsx:20 src/components/windows/index.js:16
+msgid "User Area"
+msgstr "cheantar úsáideoirí"
+
+#: src/components/buttons/DownloadButton.jsx:36
+msgid "Make Screenshot"
+msgstr "Déan Screenshot"
+
+#: src/components/buttons/GlobeButton.jsx:34
+msgid "Globe View"
+msgstr "amharc cruinneog"
+
+#: src/components/buttons/PalselButton.jsx:30
+msgid "Close Palette"
+msgstr "Droid pailéad"
+
+#: src/components/buttons/PalselButton.jsx:30
+msgid "Open Palette"
+msgstr "Oscail pailéad"
+
+#: src/components/buttons/SettingsButton.jsx:21
+#: src/components/windows/index.js:15
+msgid "Settings"
+msgstr "Ait socruithe"
+
+#: src/components/buttons/PencilButton.jsx:41
+msgid "Enable Pencil"
+msgstr "Lás Peann luaidhe"
+
+#: src/components/buttons/PencilButton.jsx:46
+msgid "Disable Pencil"
+msgstr "dhíchumasú peann luaidhe"
+
+#: src/components/buttons/PencilButton.jsx:50
+msgid "Disable History Pencil"
+msgstr "dhíchumasú Peann luaidhe stairiúil"
+
+#: src/components/buttons/PencilButton.jsx:54
+msgid "Disable Overlay Pencil"
+msgstr "disable peann luaidhe forleagan"
+
+#: src/components/windows/index.js:17
+msgid "Registration"
+msgstr "Síniú isteach"
+
+#: src/components/windows/index.js:18
+msgid "Forgot Password"
+msgstr "Pasfhocal dearmadta"
+
+#: src/components/windows/index.js:19
+msgid "Chat"
+msgstr "Comhrá"
+
+#: src/components/windows/index.js:21
+msgid "Canvas Archive"
+msgstr "chartlann canbhás"
+
+#: src/components/windows/index.js:22
+msgid "Player"
+msgstr ""
+
+#: src/components/GlobalCaptcha.jsx:48
+msgid "You took too long, try again."
+msgstr "Ghlac to raibh fhada, Tráil Arís."
+
+#: src/components/GlobalCaptcha.jsx:51
+msgid "You failed your captcha"
+msgstr "Theip ort don Captcha"
+
+#: src/components/GlobalCaptcha.jsx:54
+msgid "No or invalid captcha text"
+msgstr "Níl nó neamhbhailí captcha teics"
+
+#: src/components/GlobalCaptcha.jsx:57
+msgid "No captcha id given"
+msgstr "Níor thugtar captcha id"
+
+#: src/components/GlobalCaptcha.jsx:63
+msgid "Unknown Captcha Error"
+msgstr "Earráid Captcha Nach bhfuil are eolas"
+
+#: src/components/BanInfo.jsx:80 src/components/Captcha.jsx:79
+#: src/components/ChangeMail.jsx:72 src/components/ChangeName.jsx:58
+#: src/components/ChangePassword.jsx:79 src/components/DeleteAccount.jsx:55
+#: src/components/GlobalCaptcha.jsx:75 src/components/LogInForm.jsx:70
+#: src/components/windows/ForgotPassword.jsx:73
+#: src/components/windows/Register.jsx:89
+msgid "Error"
+msgstr "Earráid"
+
+#: src/components/ChangeMail.jsx:93 src/components/ChangeName.jsx:70
+#: src/components/ChangePassword.jsx:115 src/components/DeleteAccount.jsx:68
+#: src/components/GlobalCaptcha.jsx:84 src/components/RefreshPrompt.jsx:16
+#: src/components/TemplateItemEdit.jsx:181
+#: src/components/windows/ForgotPassword.jsx:89
+#: src/components/windows/Register.jsx:133
+msgid "Cancel"
+msgstr "Stad"
+
+#: src/components/GlobalCaptcha.jsx:90
+msgid "Send"
+msgstr "Cuir amach"
+
+#: src/components/BanInfo.jsx:66
+msgid "You are banned. You think it is unjustified? Check out the "
+msgstr "Cuirtear cosc ort, má shíleann tú gur cosc gan údar é? Dul chuig an "
+
+#: src/components/BanInfo.jsx:76
+msgid " on how to appeal."
+msgstr " Ar dóigh le achomharc"
+
+#: src/components/BanInfo.jsx:85 src/components/ModIIDtools.jsx:73
+msgid "Reason"
+msgstr "Fáth"
+
+#: src/components/BanInfo.jsx:91
+msgid "By Mod"
+msgstr "Ó modhnóir"
+
+#: src/components/BanInfo.jsx:97 src/components/ModIIDtools.jsx:84
+msgid "Duration"
+msgstr "ré"
+
+#: src/components/BanInfo.jsx:99
+msgid "Your ban expires at "
+msgstr "Cuirtear do cosc in éag ar "
+
+#: src/components/BanInfo.jsx:101
+msgid " which is in "
+msgstr " A bhfuil i "
+
+#: src/components/BanInfo.jsx:112
+msgid "Unbanned"
+msgstr "gan cosc"
+
+#: src/components/BanInfo.jsx:113
+msgid "Now that you have seen this message, you are no longer banned."
+msgstr "Mar gheal fur bhaca tú an teachtaireacht seo, níl cosc ort níos mo"
+
+#: src/components/BanInfo.jsx:127
+msgid "Why?"
+msgstr "Cén fáth?"
+
+#: src/components/RefreshPrompt.jsx:14
+msgid "Refresh"
+msgstr ""
+
+#: src/components/windows/Help.jsx:65
+msgid "Place color pixels on a large canvas with other players online!"
+msgstr "Cuir picteilíní dath ar canbhás mór le daoine eile are líne!"
+
+#: src/components/windows/Help.jsx:66
+msgid ""
+"Our main canvas is a huge worldmap, you can place wherever you like, but you "
+"will have to wait a specific Cooldown between pixels. You can check out the "
+"cooldown and requirements on the Canvas Selection menu (globe button on "
+"top). Some canvases have a different cooldown for replacing a user-set "
+"pixels than placing on a unset pixel. i.e. 4s/7s means 4s on fresh pixels "
+"and 7s on already set pixels."
+msgstr ""
+"Is é an priomh Canbhás, léarscáil mór don domhan, tá tú ábalta cuir "
+"picteilíní áit ar bith, ach caithfidh tú fanacht giota beag idir gach ceann, "
+"tá tú ábalta cuir seic are an t-am idir gach picteilíní agus na riachtanais "
+"ar an rogha Canbhás (caipín cruinneog ar barr). Do cuid canbháis tá an am "
+"difriúl idir gach picteilíní, do picteilín nach cuir duine ar bith rud eile "
+"ar ríomh, ní ach 4 soicind, ach do picteilín a raibh duine éigin eile are "
+"ríomh, 7 soicind atá ann."
+
+#: src/components/windows/Help.jsx:67
+msgid ""
+"Higher zoomlevels take some time to update, the 3D globe gets updated at "
+"least once per day."
+msgstr ""
+"Ghlacan sé níos mó ama do daoine ina bhfuil siad níos súmáilte isteach, Don "
+"mapa a nuashonrú, faigheann an cruinneog 3D nuashonraithe gach la"
+
+#: src/components/windows/Help.jsx:68
+msgid "Have fun!"
+msgstr "Bíodh sult agat!"
+
+#: src/components/windows/Help.jsx:70
+msgid "recommended"
+msgstr "molta"
+
+#: src/components/windows/Help.jsx:71
+msgid "Source on "
+msgstr "foinse ar "
+
+#: src/components/windows/Help.jsx:72
+msgid "Map Data"
+msgstr "Sonraí Mhapa"
+
+#: src/components/windows/Help.jsx:73
+msgid ""
+"The bare map data that we use, together with converted OpenStreetMap tiles "
+"for orientation, can be downloaded from mega.nz here: "
+msgstr ""
+"Is féidir na sonraí léarscáile lom a úsáidimid, mar aon le tíleanna "
+"tiontaithe OpenStreetMap le haghaidh treoshuímh, a íoslódáil ó mega.nz "
+"anseo: "
+
+#: src/components/windows/Help.jsx:74
+msgid "Banned? Detected as Proxy?"
+msgstr "Cosc? Braitheadh mar Proxy?"
+
+#: src/components/windows/Help.jsx:76
+#, javascript-format
+msgid ""
+"If you got detected as proxy, but you are none, or think that you got "
+"wrongfully banned, please go to our ${ guildedLink } or send us an e-mail to "
+"${ mailLink } and include the following IID:"
+msgstr ""
+"Ma Braitheadh tú mar proxy, ach Níl tú, no ma shíleann tú gur cosc mícheart "
+"é, dul go dtí ${ guildedLink } le do chul, nó cuir ríomhphost chuig "
+"${ mailLink } agus cuir isteach an ID thíos:"
+
+#: src/components/windows/Help.jsx:79 src/components/windows/Help.jsx:95
+msgid "Controls"
+msgstr "Rialúcháin"
+
+#: src/components/windows/Help.jsx:81
+msgid "Click a color in palette to select it"
+msgstr "Cliceáil ar dath i bpailéad a roghnú é"
+
+#: src/components/windows/Help.jsx:82
+#, javascript-format
+msgid "Press ${ bindG } to toggle grid"
+msgstr "Cliceáil ar ${ bindG } le Greille scoránaigh"
+
+#: src/components/windows/Help.jsx:83
+#, javascript-format
+msgid "Press ${ bindX } to toggle showing of pixel activity"
+msgstr ""
+"Cliceáil ar ${ bindX } le léiriú ar ghníomhaíocht picteilín a shocróidh"
+
+#: src/components/windows/Help.jsx:84
+#, javascript-format
+msgid "Press ${ bindH } to toggle historical view"
+msgstr "Cliceáil ar ${ bindH } le amharcanna stairiúil a shocróidh"
+
+#: src/components/windows/Help.jsx:85
+#, javascript-format
+msgid "Press ${ bindR } to copy coordinates"
+msgstr "Cliceáil ar ${ bindR } le Comhordanáidí a cóipeáil"
+
+#: src/components/windows/Help.jsx:86
+#, javascript-format
+msgid "Press ${ bindQ } or ${ bindE } to zoom"
+msgstr "Cliceáil ar ${ bindQ } nó ${ bindE } le súmáil"
+
+#: src/components/windows/Help.jsx:87 src/components/windows/Help.jsx:97
+#, javascript-format
+msgid "Press ${ bindW }, ${ bindA }, ${ bindS }, ${ bindD } to move"
+msgstr "Cliceáil ${ bindW }, ${ bindA }, ${ bindS }, ${ bindD } le Bóg"
+
+#: src/components/windows/Help.jsx:88 src/components/windows/Help.jsx:98
+#, javascript-format
+msgid ""
+"Press ${ bindAUp }, ${ bindALeft }, ${ bindADown }, ${ bindARight } to move"
+msgstr ""
+"Cliceáil ${ bindAUp }, ${ bindALeft }, ${ bindADown }, ${ bindARight } le bóg"
+
+#: src/components/windows/Help.jsx:89
+#, javascript-format
+msgid "Drag ${ mouseSymbol } mouse or ${ touchSymbol } pan to move"
+msgstr "Tarraing ${ mouseSymbol } luchóg nó ${ touchSymbol } pan le bóg"
+
+#: src/components/windows/Help.jsx:90
+#, javascript-format
+msgid "Scroll ${ mouseSymbol } mouse wheel or ${ touchSymbol } pinch to zoom"
+msgstr ""
+"Scrollaigh ${ mouseSymbol } luchóg rotha nó ${ touchSymbol } bhain liomóg as "
+"le Zúm"
+
+#: src/components/windows/Help.jsx:91
+#, javascript-format
+msgid "Hold left ${ bindShift } for pencil (to place while moving mouse)"
+msgstr ""
+"coinnigh ar chlé ${ bindShift } do peann luaidhe (le cuir nuair atá tú ag "
+"bóg an luchóg)"
+
+#: src/components/windows/Help.jsx:92 src/components/windows/Help.jsx:103
+#, javascript-format
+msgid "${ mouseSymbol } Left click or ${ touchSymbol } tap to place a pixel"
+msgstr ""
+
+#: src/components/windows/Help.jsx:93 src/components/windows/Help.jsx:105
+#, javascript-format
+msgid ""
+"Click ${ mouseSymbol } middle mouse button or ${ touchSymbol } long-tap to "
+"select current hovering color"
+msgstr ""
+
+#: src/components/windows/Help.jsx:99
+#, javascript-format
+msgid "Press ${ bindQ } and ${ bindE } to fly up and down"
+msgstr ""
+
+#: src/components/windows/Help.jsx:100
+#, javascript-format
+msgid "${ mouseSymbol } Hold left mouse button and drag mouse to rotate"
+msgstr ""
+
+#: src/components/windows/Help.jsx:101
+#, javascript-format
+msgid ""
+"${ mouseSymbol } Scroll mouse wheel or hold ${ mouseSymbol } middle mouse "
+"button and drag to zoom"
+msgstr ""
+
+#: src/components/windows/Help.jsx:102
+#, javascript-format
+msgid "${ mouseSymbol } Right click and drag mouse to pan"
+msgstr ""
+
+#: src/components/windows/Help.jsx:104
+#, javascript-format
+msgid ""
+"${ mouseSymbol } Right click or ${ touchSymbol } double-tap to remove a pixel"
+msgstr ""
+
+#: src/components/windows/Help.jsx:109
+msgid ""
+"We thank the following artists, who made their palettes available to the "
+"public on"
+msgstr ""
+
+#: src/components/windows/Help.jsx:112
+#, javascript-format
+msgid "Credit for the Palette of the Moon goes to ${ starhouseLink }."
+msgstr ""
+
+#: src/components/windows/Help.jsx:115
+#, javascript-format
+msgid "Credit for the Palette of the Top10 canvas goes to ${ vinikLink }."
+msgstr ""
+
+#: src/components/windows/Help.jsx:118
+#, javascript-format
+msgid "Credit for the Palette of the 2bit canvas goes to ${ donendoLink }."
+msgstr ""
+
+#: src/components/windows/Settings.jsx:72
+msgid "Show Grid"
+msgstr "Taispeánt an eangach"
+
+#: src/components/windows/Settings.jsx:77
+msgid "Turn on grid to highlight pixel borders."
+msgstr "Cas ar an eangach chun béim a chur ar theorainneacha picteilín."
+
+#: src/components/windows/Settings.jsx:80
+msgid "Show Pixel Activity"
+msgstr "Taispeánt gníomhaíocht picteilíní"
+
+#: src/components/windows/Settings.jsx:85
+msgid "Show circles where pixels are placed."
+msgstr "Taispéant ciorcal sna háiteanna a gcuirtear picteilíní."
+
+#: src/components/windows/Settings.jsx:88
+msgid "Always show Movement Controls"
+msgstr "Taispéant srianta gluaiseacht i gcónaí"
+
+#: src/components/windows/Settings.jsx:93
+msgid "Always show movement control buttons"
+msgstr "Taispéant rialuithe Gluaiseacht cnaipí I gconaí"
+
+#: src/components/windows/Settings.jsx:96
+msgid "Disable Game Sounds"
+msgstr "Díchumasaigh Fuaimeanna Cluiche"
+
+#: src/components/windows/Settings.jsx:102
+msgid "All sound effects will be disabled."
+msgstr "Cuirfidh faoi mhíchumas na Fuaimeanna Éifeachta uilig."
+
+#: src/components/windows/Settings.jsx:106
+msgid ""
+"Your Browser doesn't allow us to use AudioContext to play sounds. Do you "
+"have some privacy feature blocking us?"
+msgstr ""
+"Ní ligeann do Brabhsálaí dúinn le baint úsáid as AudioContext le fuaim a "
+"Séanaim. An bhfuil gnéithe príobháideachta agat a bhfuil ag cuur Bloc "
+"orrainn?"
+
+#: src/components/windows/Settings.jsx:112
+msgid "Enable chat notifications"
+msgstr "Cuir cumasaigh ar Fógraí Teachtaireachta"
+
+#: src/components/windows/Settings.jsx:116
+msgid "Play a sound when new chat messages arrive"
+msgstr "Séanaim fuam nuair a thagann teachtaireacht nua sa comhrá"
+
+#: src/components/windows/Settings.jsx:119
+msgid "Auto Zoom In"
+msgstr "Uathsúmáilte isteach"
+
+#: src/components/windows/Settings.jsx:124
+msgid ""
+"Zoom in instead of placing a pixel when you tap the canvas and your zoom is "
+"small."
+msgstr ""
+"zúmáil isteach in ait cuir picteilíní nuair a cliceáileann tú are an cambhas "
+"agus tá do zúm beag"
+
+#: src/components/windows/Settings.jsx:127
+msgid "Compact Palette"
+msgstr "Pailéad dlúth"
+
+#: src/components/windows/Settings.jsx:132
+msgid "Display Palette in a compact form that takes less screen space."
+msgstr ""
+"taispeáint pailéad in fhoirm Dlúth a ghlacann níos liú Spás sa scáileán."
+
+#: src/components/windows/Settings.jsx:135
+msgid "Potato Mode"
+msgstr "Modh prátaí"
+
+#: src/components/windows/Settings.jsx:139
+msgid "For when you are playing on a potato."
+msgstr "Nuair a n-imríonn tú ar phráta."
+
+#: src/components/Converter.jsx:381 src/components/windows/Settings.jsx:142
+msgid "Light Grid"
+msgstr "eangach éadrom"
+
+#: src/components/windows/Settings.jsx:146
+msgid "Show Grid in white instead of black."
+msgstr "Taispéant eangach i mbán in áit dhuth."
+
+#: src/components/windows/Settings.jsx:149
+msgid "Custom Cursor"
+msgstr ""
+
+#: src/components/windows/Settings.jsx:153
+msgid "Use our custom cursor"
+msgstr ""
+
+#: src/components/windows/Settings.jsx:157
+msgid "Historical View"
+msgstr "rAmharcanna Stairiúil"
+
+#: src/components/windows/Settings.jsx:162
+msgid "Check out past versions of the canvas."
+msgstr "Amharc ar leaganacha stairiúil ón canbhás."
+
+#: src/components/windows/Settings.jsx:166
+#, javascript-format
+msgid "Pencil Mode for ${ canvasName } canvas"
+msgstr "Mód peann luaidhe do Canbhás ${ canvasName }"
+
+#: src/components/windows/Settings.jsx:174
+msgid "What the pencil should draw on the current canvas."
+msgstr "An rud a caithfidh an peann luaidhe tarraingt ar an Canbhás seo."
+
+#: src/components/windows/Settings.jsx:178
+msgid "Themes"
+msgstr "Téamaí"
+
+#: src/components/windows/Settings.jsx:183
+msgid "How pixelplanet should look like."
+msgstr "An dóigh a ba Chóir do Pixelplanet a beith mar."
+
+#: src/components/windows/Settings.jsx:190
+msgid "Select Language"
+msgstr "Roghnaigh Teanga"
+
+#: src/components/windows/UserArea.jsx:36
+#: src/components/windows/UserArea.jsx:56
+msgid "Profile"
+msgstr ""
+
+#: src/components/windows/UserArea.jsx:59
+msgid "Statistics"
+msgstr ""
+
+#: src/components/windows/UserArea.jsx:64
+msgid "Converter"
+msgstr ""
+
+#: src/components/windows/UserArea.jsx:70
+msgid "Modtools"
+msgstr ""
+
+#: src/components/windows/UserArea.jsx:71
+msgid "Loading..."
+msgstr "Ag Loadail..."
+
+#: src/components/windows/UserArea.jsx:78
+msgid "Consider joining us on Guilded:"
+msgstr ""
+
+#: src/components/windows/CanvasSelect.jsx:29
+msgid ""
+"Select the canvas you want to use.\n"
+"Every canvas is unique and has different palettes, cooldown and "
+"requirements.\n"
+"Archived canvases can be accessed here:"
+msgstr ""
+
+#: src/components/windows/CanvasSelect.jsx:37
+msgid "Archive"
+msgstr ""
+
+#: src/components/windows/CanvasSelect.jsx:70
+msgid "Retired Canvases (history only)"
+msgstr ""
+
+#: src/components/windows/Register.jsx:87
+msgid "Register new account here"
+msgstr ""
+
+#: src/components/windows/Register.jsx:92
+#: src/components/windows/Register.jsx:98
+msgid "Name"
+msgstr "Ainm"
+
+#: src/components/windows/ForgotPassword.jsx:80
+#: src/components/windows/Register.jsx:100
+#: src/components/windows/Register.jsx:106
+msgid "Email"
+msgstr "Ríomhphost"
+
+#: src/components/ChangeMail.jsx:80 src/components/DeleteAccount.jsx:62
+#: src/components/LogInForm.jsx:84 src/components/windows/Register.jsx:108
+#: src/components/windows/Register.jsx:114
+msgid "Password"
+msgstr "Pasfhocal"
+
+#: src/components/windows/Register.jsx:116
+#: src/components/windows/Register.jsx:122
+msgid "Confirm Password"
+msgstr ""
+
+#: src/components/windows/Register.jsx:124
+msgid "Captcha"
+msgstr ""
+
+#: src/components/Admintools.jsx:154 src/components/Admintools.jsx:238
+#: src/components/ModCanvastools.jsx:313 src/components/ModCanvastools.jsx:404
+#: src/components/ModCanvastools.jsx:482 src/components/ModCanvastools.jsx:583
+#: src/components/ModIIDtools.jsx:135
+#: src/components/windows/ForgotPassword.jsx:84
+#: src/components/windows/Register.jsx:127
+msgid "Submit"
+msgstr "Cuir isteach"
+
+#: src/components/windows/Archive.jsx:9
+msgid ""
+"While we tend to not delete canvases, some canvases are started for fun or "
+"as a request by users who like a currently popular meme. Those canvases can "
+"become dull and inactive after a while, at which point there is no reason to "
+"keep them and we may decide to remove them."
+msgstr ""
+"cé go mbíonn claonadh againn gan canbhásanna a scriosadh, cuirtear tús le "
+"roinnt canbhás le haghaidh spraoi nó de réir mar a iarrann úsáideoirí ar "
+"mhaith leo meime  coitianta. Bíonn na canbhás sin maol agus neamhghníomhach "
+"I ndiaidh tamaill beag, ag an pointe sin níl fáth leis iad a cineál, agus "
+"roghnaíonn muid le cuir scrios orthu."
+
+#: src/components/windows/Archive.jsx:10
+msgid ""
+"Here we collect removed canvases to archive them properly. Which is "
+"currently only one."
+msgstr "Anseo bhailiúmid na canbhás scriosta. Nach bhfuil ach ceann amháin."
+
+#: src/components/windows/Archive.jsx:12
+msgid "Political Compass Canvas"
+msgstr "Canbhás Compás Polaitiúil"
+
+#: src/components/windows/Archive.jsx:21
+msgid ""
+"This canvas got requested during a time of political conflicts on the main "
+"Earth canvas. It was a 1024x1024 representation of the political compass "
+"with a 5s cooldown and 60s stacking. It got launched on May 11th and "
+"remained active for months till it got shut down on November 30th."
+msgstr ""
+
+#: src/components/windows/Archive.jsx:22
+msgid ""
+"We decided to archive it as a timelapse with lossless encoded webm. Taking a "
+"screenshot from the timelapse results in a perfect 1:1 representation of how "
+"the canvas was at that time."
+msgstr ""
+
+#: src/components/windows/Chat.jsx:180
+msgid "Start chatting here"
+msgstr ""
+
+#: src/components/windows/Chat.jsx:217
+msgid "Chat here"
+msgstr ""
+
+#: src/components/windows/Chat.jsx:243
+msgid "You must be logged in to chat"
+msgstr ""
+
+#: src/components/windows/Chat.jsx:273
+msgid "Channel settings"
+msgstr ""
+
+#: src/components/windows/Player.jsx:17
+msgid "This URL is not supported by our Media Player"
+msgstr ""
+
+#: src/components/windows/ForgotPassword.jsx:58
+msgid "Sent you a mail with instructions to reset your password."
+msgstr ""
+
+#: src/components/windows/ForgotPassword.jsx:69
+msgid "Enter your mail address and we will send you a new password:"
+msgstr ""
+
+#: src/components/Captcha.jsx:51 src/components/Captcha.jsx:107
+msgid "Could not load captcha"
+msgstr ""
+
+#: src/components/Captcha.jsx:71
+msgid "Type the characters from the following image:"
+msgstr ""
+
+#: src/components/Captcha.jsx:74
+msgid "Tip: Not case-sensitive; I and l are the same"
+msgstr ""
+
+#: src/components/Captcha.jsx:116
+msgid "Load Captcha"
+msgstr ""
+
+#: src/components/Captcha.jsx:121
+msgid "Click to Load Captcha"
+msgstr ""
+
+#: src/components/Captcha.jsx:126
+msgid "Can't read? Reload:"
+msgstr ""
+
+#: src/components/Captcha.jsx:130
+msgid "Reload"
+msgstr ""
+
+#: src/components/Captcha.jsx:140
+msgid "Enter Characters"
+msgstr ""
+
+#: src/utils/validation.js:17
+msgid "Email can't be empty."
+msgstr "Caithfidh tú rud a cuir istigh Ríomhphost."
+
+#: src/utils/validation.js:18
+msgid "Email should be at least 5 characters long."
+msgstr "Ba chóir Ríomhphost a bheith ar a laghad 5 carachtair fada."
+
+#: src/utils/validation.js:19
+msgid "Email can't be longer than 40 characters."
+msgstr "Ní féidir Ríomhphost a bheith níos faide ná 40 carachtair."
+
+#: src/utils/validation.js:20
+msgid "Email should at least contain a dot"
+msgstr "Ba chóir go mbeadh ar a laghad ponc amhainn ann"
+
+#: src/utils/validation.js:22
+msgid "Email should contain a @"
+msgstr "Ba chóir go mbeadh @ i do Ríomhphost"
+
+#: src/utils/validation.js:29
+msgid "Name can't be empty."
+msgstr "Ní féidir ainm a bheith folamh."
+
+#: src/utils/validation.js:30
+msgid "Name must be at least 2 characters long"
+msgstr "Ní mór ainm a bheith ar a laghad 2 carachtair fada"
+
+#: src/utils/validation.js:31
+msgid "Name must be shorter than 26 characters"
+msgstr "Ní mór ainm a bheith níos giorra ná 26 carachtair"
+
+#: src/utils/validation.js:38
+msgid "Name contains invalid character like @, /, \\ or #"
+msgstr "Tá charachtair neamhbhailí Ann mar shampla @,/,\\ nó #"
+
+#: src/utils/validation.js:53
+msgid "No password given."
+msgstr "Níor thabhar tu phasfhocal."
+
+#: src/utils/validation.js:56
+msgid "Password must be at least 6 characters long."
+msgstr "Caithfidh an phasfhocal beidh ar a laghad 6 charachtair."
+
+#: src/utils/validation.js:59
+msgid "Password must be shorter than 60 characters."
+msgstr "Caithfidh an phasfhocal beidh ar a mhéad 60 charachtair."
+
+#: src/components/GetIID.jsx:44
+msgid "Get IID"
+msgstr ""
+
+#: src/components/GetIID.jsx:53
+msgid "Copy"
+msgstr ""
+
+#: src/components/ChangeMail.jsx:91 src/components/ChangeName.jsx:68
+#: src/components/ChangePassword.jsx:109 src/components/LanguageSelect.jsx:79
+#: src/components/TemplateItemEdit.jsx:209
+msgid "Save"
+msgstr ""
+
+#: src/components/TemplateSettings.jsx:52
+msgid "Templates"
+msgstr ""
+
+#: src/components/TemplateSettings.jsx:56
+msgid ""
+"Tired of always spaming one single color? Want to create art instead, but "
+"you have to count pixels from some other image? Templates can help you with "
+"that! Templates can show as overlay and you can draw over them. One pixel on "
+"the template, should be one pixel on the canvas."
+msgstr ""
+
+#: src/components/TemplateSettings.jsx:60
+msgid "Enable Overlay"
+msgstr ""
+
+#: src/components/TemplateSettings.jsx:65
+msgid "Show templates as overlays ingame."
+msgstr ""
+
+#: src/components/TemplateSettings.jsx:68
+msgid "Small Pixels When Zoomed"
+msgstr ""
+
+#: src/components/TemplateSettings.jsx:73
+msgid "Show overlay as small individual pixels on high zoomlevels."
+msgstr ""
+
+#: src/components/TemplateSettings.jsx:80
+msgid "Overlay Opacity"
+msgstr ""
+
+#: src/components/TemplateSettings.jsx:94
+msgid "Opacity of Overlay in percent."
+msgstr ""
+
+#: src/components/TemplateSettings.jsx:132
+msgid "Cancel adding Template"
+msgstr ""
+
+#: src/components/TemplateSettings.jsx:139
+msgid "Add Template"
+msgstr ""
+
+#: src/components/TemplateSettings.jsx:156
+msgid "Export enabled templates"
+msgstr ""
+
+#: src/components/TemplateSettings.jsx:165
+msgid "Import templates"
+msgstr ""
+
+#: src/components/LogInArea.jsx:19
+msgid "Login to access more features and stats."
+msgstr ""
+
+#: src/components/LogInArea.jsx:21
+msgid "Login with Name or Mail:"
+msgstr ""
+
+#: src/components/LogInArea.jsx:28
+msgid "I forgot my Password."
+msgstr ""
+
+#: src/components/LogInArea.jsx:29
+msgid "or login with:"
+msgstr ""
+
+#: src/components/LogInArea.jsx:70
+msgid "or register here:"
+msgstr ""
+
+#: src/components/LogInArea.jsx:75
+msgid "Register"
+msgstr ""
+
+#: src/components/UserAreaContent.jsx:69
+msgid "Today Placed Pixels"
+msgstr ""
+
+#: src/components/UserAreaContent.jsx:73
+msgid "Daily Rank"
+msgstr ""
+
+#: src/components/UserAreaContent.jsx:83
+msgid "Total Rank"
+msgstr ""
+
+#: src/components/UserAreaContent.jsx:89
+#, javascript-format
+msgid "Your name is: ${ name }"
+msgstr ""
+
+#: src/components/UserAreaContent.jsx:95
+msgid "Log out"
+msgstr ""
+
+#: src/components/UserAreaContent.jsx:102
+msgid "Change Username"
+msgstr ""
+
+#: src/components/UserAreaContent.jsx:112
+msgid "Change Mail"
+msgstr ""
+
+#: src/components/UserAreaContent.jsx:121
+msgid "Change Password"
+msgstr ""
+
+#: src/components/UserAreaContent.jsx:128
+msgid "Delete Account"
+msgstr ""
+
+#: src/components/UserAreaContent.jsx:135
+msgid "Social Settings"
+msgstr ""
+
+#: src/components/Converter.jsx:191 src/components/ModCanvastools.jsx:231
+msgid "Choose Canvas"
+msgstr ""
+
+#: src/components/Converter.jsx:218
+msgid "Palette Download"
+msgstr ""
+
+#: src/components/Converter.jsx:220
+#, javascript-format
+msgid "Palette for ${ gimpLink }"
+msgstr ""
+
+#: src/components/Converter.jsx:241
+msgid "Image Converter"
+msgstr ""
+
+#: src/components/Converter.jsx:242
+msgid "Convert an image to canvas colors"
+msgstr ""
+
+#: src/components/Converter.jsx:261
+msgid "Choose Strategy"
+msgstr ""
+
+#: src/components/Converter.jsx:299
+msgid "Serpentine"
+msgstr ""
+
+#: src/components/Converter.jsx:301
+msgid "Minimum Color Distance"
+msgstr ""
+
+#: src/components/Converter.jsx:328
+msgid "Calculate like GIMP"
+msgstr ""
+
+#: src/components/Converter.jsx:332
+msgid "Choose Color Mode"
+msgstr ""
+
+#: src/components/Converter.jsx:361
+msgid "Add Grid (uncheck if you need a 1:1 template)"
+msgstr ""
+
+#: src/components/Converter.jsx:383 src/components/Converter.jsx:399
+msgid "Offset"
+msgstr ""
+
+#: src/components/Converter.jsx:428
+msgid "Scale Image"
+msgstr ""
+
+#: src/components/Converter.jsx:439
+msgid "Width"
+msgstr ""
+
+#: src/components/Converter.jsx:470
+msgid "Height"
+msgstr ""
+
+#: src/components/Converter.jsx:509
+msgid "Keep Ratio"
+msgstr ""
+
+#: src/components/Converter.jsx:522
+msgid "Anti Aliasing"
+msgstr ""
+
+#: src/components/Converter.jsx:536
+msgid "Reset"
+msgstr ""
+
+#: src/components/Converter.jsx:554
+msgid "Download Template"
+msgstr ""
+
+#: src/components/Rankings.jsx:168
+msgid "Yesterday"
+msgstr ""
+
+#: src/components/Rankings.jsx:177
+msgid "Countries Today"
+msgstr ""
+
+#: src/components/Rankings.jsx:186 src/components/Rankings.jsx:203
+msgid "Charts"
+msgstr ""
+
+#: src/components/Rankings.jsx:191
+#, fuzzy
+msgid "Total Pixels per Player"
+msgstr "Picteilíní cuirtha"
+
+#: src/components/Rankings.jsx:192
+#, fuzzy
+msgid "Daily Pixels per Player"
+msgstr "Picteilíní cuirtha"
+
+#: src/components/Rankings.jsx:193
+msgid "Top 10 Players from Yesterday"
+msgstr ""
+
+#: src/components/Rankings.jsx:197
+msgid "Daily Pixels per Country"
+msgstr ""
+
+#: src/components/Rankings.jsx:215 src/components/Rankings.jsx:224
+#: src/components/Rankings.jsx:233
+msgid "User"
+msgstr "Úsáideoir"
+
+#: src/components/CooldownChanges.jsx:24 src/components/Rankings.jsx:240
+msgid "Country"
+msgstr ""
+
+#: src/components/Rankings.jsx:243
+msgid "+last hour"
+msgstr ""
+
+#: src/components/Rankings.jsx:314
+msgid "Ranking updates every 5 min. Daily rankings get reset at midnight UTC."
+msgstr ""
+
+#: src/components/CanvasItem.jsx:29
+msgid "Online Users"
+msgstr ""
+
+#: src/components/CanvasItem.jsx:34
+msgid "Cooldown"
+msgstr ""
+
+#: src/components/CanvasItem.jsx:40
+msgid "Stacking till"
+msgstr ""
+
+#: src/components/CanvasItem.jsx:42
+msgid "Ranked"
+msgstr ""
+
+#: src/components/CanvasItem.jsx:44
+msgid "Yes"
+msgstr "Tá"
+
+#: src/components/CanvasItem.jsx:44
+msgid "No"
+msgstr "Níl"
+
+#: src/components/CanvasItem.jsx:50
+msgid "Requirements"
+msgstr ""
+
+#: src/components/CanvasItem.jsx:53
+msgid "User Account"
+msgstr ""
+
+#: src/components/CanvasItem.jsx:55
+#, javascript-format
+msgid "and ${ canvas.req } Pixels set"
+msgstr ""
+
+#: src/components/CanvasItem.jsx:58
+msgid "Top 10 Daily Ranking"
+msgstr ""
+
+#: src/components/CanvasItem.jsx:64 src/components/TemplateItem.jsx:60
+#: src/components/TemplateItemEdit.jsx:160
+msgid "Dimensions"
+msgstr ""
+
+#: src/components/ModWatchtools.jsx:123 src/components/TemplateItem.jsx:54
+#: src/components/TemplateItemEdit.jsx:122
+msgid "Canvas"
+msgstr ""
+
+#: src/components/TemplateItem.jsx:57 src/components/TemplateItemEdit.jsx:141
+msgid "Coordinates"
+msgstr ""
+
+#: src/components/TemplateItem.jsx:71
+msgid "Edit"
+msgstr ""
+
+#: src/components/TemplateItem.jsx:81
+msgid "Go to"
+msgstr ""
+
+#: src/components/TemplateItemEdit.jsx:97
+msgid "Select File"
+msgstr ""
+
+#: src/components/TemplateItemEdit.jsx:120
+msgid "Template Name"
+msgstr ""
+
+#: src/components/TemplateItemEdit.jsx:174
+msgid "Delete"
+msgstr ""
+
+#: src/components/LogInForm.jsx:77
+msgid "Name or Email"
+msgstr ""
+
+#: src/components/LogInForm.jsx:88
+msgid "LogIn"
+msgstr ""
+
+#: src/components/UserMessages.jsx:28
+msgid ""
+"Please verify your mail address or your account could get deleted after a "
+"few days."
+msgstr ""
+
+#: src/components/UserMessages.jsx:49
+msgid "A new verification mail is getting sent to you."
+msgstr ""
+
+#: src/components/UserMessages.jsx:53
+msgid "Click here to request a new verification mail."
+msgstr ""
+
+#: src/components/ChangePassword.jsx:21
+msgid "Passwords do not match."
+msgstr ""
+
+#: src/components/ChangePassword.jsx:44
+msgid "Password successfully changed."
+msgstr "Phasfhocal athraithe go rathúil."
+
+#: src/components/ChangePassword.jsx:88
+msgid "Old Password"
+msgstr "Pasfhocal Sean"
+
+#: src/components/ChangePassword.jsx:96
+msgid "New Password"
+msgstr "Phasfhocal Nua"
+
+#: src/components/ChangePassword.jsx:103
+msgid "Confirm New Password"
+msgstr "deimhnigh n phasfhocal nua"
+
+#: src/components/ChangeName.jsx:64
+msgid "New Username"
+msgstr ""
+
+#: src/components/ChangeMail.jsx:59
+msgid ""
+"Changed Mail successfully. We sent you a verification mail,             "
+"please verify your new mail address."
+msgstr ""
+
+#: src/components/ChangeMail.jsx:87
+msgid "New Mail"
+msgstr ""
+
+#: src/components/DeleteAccount.jsx:66
+msgid "Yes, Delete My Account!"
+msgstr ""
+
+#: src/components/SocialSettings.jsx:35
+msgid "Block DMs"
+msgstr ""
+
+#: src/components/SocialSettings.jsx:42
+msgid "Block all Private Messages"
+msgstr ""
+
+#: src/components/SocialSettings.jsx:44
+msgid "Private"
+msgstr ""
+
+#: src/components/SocialSettings.jsx:51
+msgid "Don't show me in global stats"
+msgstr ""
+
+#: src/components/SocialSettings.jsx:57
+msgid "Unblock Users"
+msgstr ""
+
+#: src/components/SocialSettings.jsx:82
+msgid "You have no users blocked"
+msgstr ""
+
+#: src/components/ModCanvastools.jsx:169
+msgid "Build image on canvas."
+msgstr ""
+
+#: src/components/ModCanvastools.jsx:172
+msgid "Build image and set it to protected."
+msgstr ""
+
+#: src/components/ModCanvastools.jsx:175
+msgid "Build image, but reset cooldown to unset-pixel cd."
+msgstr ""
+
+#: src/components/ModCanvastools.jsx:185
+msgid "Clean spare pixels that are surrounded by unset pixels"
+msgstr ""
+
+#: src/components/ModCanvastools.jsx:189
+msgid ""
+"Clean spare pixels that are surrounded by unset pixels and up to 1 other set "
+"pixels"
+msgstr ""
+
+#: src/components/ModCanvastools.jsx:193
+msgid ""
+"Clean spare pixels that are surrounded by a single other color or unset "
+"pixels (VERY AGGRESSIVE ON CANVASES THAT ALLOW UNSET PIXELS (where there are "
+"two cooldowns)!)"
+msgstr ""
+
+#: src/components/ModCanvastools.jsx:197
+msgid ""
+"Turn every pixel in area to 0 (YOU REALLY SHOULDN'T DO THAT ON ANY AREA THAT "
+"ISN'T ALREADY MOSTLY 0)"
+msgstr ""
+
+#: src/components/ModCanvastools.jsx:208
+msgid "Status: Not running"
+msgstr ""
+
+#: src/components/ModCanvastools.jsx:250
+msgid "Image Upload"
+msgstr ""
+
+#: src/components/ModCanvastools.jsx:251
+msgid "Upload images to canvas"
+msgstr ""
+
+#: src/components/ModCanvastools.jsx:253
+msgid "File"
+msgstr ""
+
+#: src/components/ModCanvastools.jsx:274
+msgid "Coordinates:"
+msgstr ""
+
+#: src/components/ModCanvastools.jsx:318
+msgid "Pixel Protection"
+msgstr ""
+
+#: src/components/ModCanvastools.jsx:322
+msgid ""
+"Set protection of areas (if you need finer grained control, use protect with "
+"image upload and alpha layers)"
+msgstr ""
+
+#: src/components/ModCanvastools.jsx:342 src/components/ModCanvastools.jsx:419
+#: src/components/ModCanvastools.jsx:513 src/components/ModWatchtools.jsx:174
+msgid "Top-left corner"
+msgstr ""
+
+#: src/components/ModCanvastools.jsx:364 src/components/ModCanvastools.jsx:441
+#: src/components/ModCanvastools.jsx:535 src/components/ModWatchtools.jsx:196
+msgid "Bottom-right corner"
+msgstr ""
+
+#: src/components/ModCanvastools.jsx:410
+msgid "Rollback to Date"
+msgstr ""
+
+#: src/components/ModCanvastools.jsx:414
+msgid "Rollback an area of the canvas to a set date and time"
+msgstr ""
+
+#: src/components/ModCanvastools.jsx:488
+msgid "Canvas Cleaner"
+msgstr ""
+
+#: src/components/ModCanvastools.jsx:490
+msgid "Apply a filter to clean trash in large canvas areas."
+msgstr ""
+
+#: src/components/ModCanvastools.jsx:601
+msgid "Stop Cleaner"
+msgstr ""
+
+#: src/components/Admintools.jsx:109
+msgid "IP Actions"
+msgstr ""
+
+#: src/components/Admintools.jsx:111
+msgid "Do stuff with IPs (one IP per line)"
+msgstr ""
+
+#: src/components/Admintools.jsx:158
+msgid "Manage Moderators"
+msgstr ""
+
+#: src/components/Admintools.jsx:160
+msgid "Remove Moderator"
+msgstr ""
+
+#: src/components/Admintools.jsx:193
+msgid "There are no mods"
+msgstr ""
+
+#: src/components/Admintools.jsx:198
+msgid "Assign new Mod"
+msgstr ""
+
+#: src/components/Admintools.jsx:201
+msgid "Enter UserName of new Mod"
+msgstr ""
+
+#: src/components/Admintools.jsx:210
+msgid "User Name"
+msgstr ""
+
+#: src/components/ModWatchtools.jsx:49
+msgid "Interval is invalid"
+msgstr ""
+
+#: src/components/ModWatchtools.jsx:122
+msgid "Check who placed in an area"
+msgstr ""
+
+#: src/components/ModWatchtools.jsx:142
+msgid "Interval"
+msgstr ""
+
+#: src/components/ModWatchtools.jsx:157
+msgid "IID (optional)"
+msgstr ""
+
+#: src/components/ModWatchtools.jsx:247
+msgid "Get Pixels"
+msgstr ""
+
+#: src/components/ModWatchtools.jsx:279
+msgid "Get Users"
+msgstr ""
+
+#: src/components/ModIIDtools.jsx:20
+msgid "You must enter a duration"
+msgstr ""
+
+#: src/components/ModIIDtools.jsx:24
+msgid "You must enter an IID"
+msgstr ""
+
+#: src/components/ModIIDtools.jsx:53
+msgid "IID Actions"
+msgstr ""
+
+#: src/components/ModIIDtools.jsx:80
+msgid "Enter Reason"
+msgstr ""
+
+#: src/components/ModIIDtools.jsx:97
+msgid "(0 = infinite)"
+msgstr ""
+
+#: src/core/chartSettings.js:30
+msgid "Top 10 Countries [pxls / day]"
+msgstr ""
+
+#: src/core/chartSettings.js:127
+msgid "Players and Pixels per hour"
+msgstr ""
+
+#: src/core/chartSettings.js:221
+msgid "Top 10 Players [pxls / day]"
+msgstr ""
+
+#: src/core/chartSettings.js:347
+msgid "Total Pixels placed per day"
+msgstr ""
+
+#: src/components/CooldownChanges.jsx:20
+msgid "Current Cooldown Changes per Country"
+msgstr ""
+
+#: src/components/CooldownChanges.jsx:25
+msgid "Factor"
+msgstr ""
+
+#: src/components/CooldownChanges.jsx:46
+msgid ""
+"Cooldown is usually automatically changed for a country that is dominating. "
+"In example in the case of a streamer raid."
+msgstr ""
+
+#: src/components/contextmenus/UserContextMenu.jsx:49
+msgid "Ping"
+msgstr ""
+
+#: src/components/contextmenus/UserContextMenu.jsx:75
+msgid "DM"
+msgstr ""
+
+#: src/components/contextmenus/UserContextMenu.jsx:86
+msgid "Block"
+msgstr ""
+
+#: src/components/contextmenus/ChannelContextMenu.jsx:46
+msgid "Mute"
+msgstr ""
+
+#: src/components/MdLink.jsx:98
+msgid "Open in PopUp"
+msgstr ""
+
+#: src/components/MdLink.jsx:109
+msgid "Hide Embed"
+msgstr ""
+
+#: src/components/MdLink.jsx:115
+msgid "Show Embedded"
+msgstr ""
+
+#: src/components/windows/Help.jsx:19 src/components/windows/Settings.jsx:73
+msgctxt "keybinds"
+msgid "G"
+msgstr "G"
+
+#: src/components/windows/Help.jsx:20 src/components/windows/Settings.jsx:81
+msgctxt "keybinds"
+msgid "X"
+msgstr "X"
+
+#: src/components/windows/Help.jsx:21 src/components/windows/Settings.jsx:159
+msgctxt "keybinds"
+msgid "H"
+msgstr "H"
+
+#: src/components/windows/Help.jsx:22
+msgctxt "keybinds"
+msgid "R"
+msgstr "R"
+
+#: src/components/windows/Help.jsx:23
+msgctxt "keybinds"
+msgid "Q"
+msgstr "Q"
+
+#: src/components/windows/Help.jsx:24
+msgctxt "keybinds"
+msgid "E"
+msgstr "E"
+
+#: src/components/windows/Help.jsx:25
+msgctxt "keybinds"
+msgid "W"
+msgstr "W"
+
+#: src/components/windows/Help.jsx:26
+msgctxt "keybinds"
+msgid "A"
+msgstr "A"
+
+#: src/components/windows/Help.jsx:27
+msgctxt "keybinds"
+msgid "S"
+msgstr "S"
+
+#: src/components/windows/Help.jsx:28
+msgctxt "keybinds"
+msgid "D"
+msgstr "D"
+
+#: src/components/windows/Help.jsx:35
+msgctxt "keybinds"
+msgid "Shift"
+msgstr "Shift"
+
+#: src/components/windows/Settings.jsx:89
+msgctxt "keybinds"
+msgid "N"
+msgstr "N"
+
+#: src/components/windows/Settings.jsx:97
+msgctxt "keybinds"
+msgid "M"
+msgstr "M"
+
+#: src/components/windows/Settings.jsx:169
+msgctxt "keybinds"
+msgid "B"
+msgstr "B"
+
+#: src/components/TemplateSettings.jsx:61
+msgctxt "keybinds"
+msgid "T"
+msgstr "T"
+
+#~ msgid "History Pencil ON"
+#~ msgstr "Stair peann luaidhe ÁR"
+
+#~ msgid "Overlay Pencil ON"
+#~ msgstr "peann luaidhe forleagan ÁR"
