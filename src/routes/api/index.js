@@ -19,6 +19,7 @@ import userprofile from './userprofile.js';
 import banme from './banme.js';
 import avatar from './avatar.js';
 import announce from './announce.js';
+import factions from './factions/index.js';
 
 const router = express.Router();
 
@@ -62,6 +63,9 @@ router.get('/me', me);
 
 router.use('/auth', auth);
 
+router.use('/factions', factions);
+router.get('/user/profile', userprofile);
+
 /*
  * only with session
  */
@@ -71,7 +75,6 @@ router.use('/modtools', modtools);
 router.use('/announce', announce);
 
 router.get('/profile', profile);
-router.get('/user/profile', userprofile);
 
 router.post('/startdm', startDm);
 

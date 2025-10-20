@@ -13,6 +13,7 @@ import WhoisReferral from './WhoisReferral.js';
 import RangeBan, { cleanRangeBans } from './RangeBan.js';
 import RangeBanHistory from './RangeBanHistory.js';
 import ProxyWhitelist from './ProxyWhitelist.js';
+import { Faction, FactionMember, FactionBan, FactionCountryExclude, FactionInvite, FactionJoinRequest } from './Faction.js';
 import ThreePID, { THREEPID_PROVIDERS } from './ThreePID.js';
 import ThreePIDHistory from './ThreePIDHistory.js';
 import Fish from './Fish.js';
@@ -400,6 +401,41 @@ User.belongsToMany(User, {
   foreignKey: 'buid',
 });
 
+/*
+ * factions
+ */
+Faction.belongsToMany(User, {
+  as: 'members',
+  through: FactionMember,
+  foreignKey: 'fid',
+});
+User.belongsToMany(Faction, {
+  as: 'factions',
+  through: FactionMember,
+  foreignKey: 'uid',
+});
+Faction.hasMany(FactionInvite, {
+  as: 'invites',
+  foreignKey: 'fid',
+});
+FactionInvite.belongsTo(Faction, {
+  as: 'faction',
+  foreignKey: 'fid',
+});
+Faction.belongsToMany(User, {
+  as: 'banned',
+  through: FactionBan,
+  foreignKey: 'fid',
+});
+Faction.hasMany(FactionCountryExclude, {
+  as: 'countryExcludes',
+  foreignKey: 'fid',
+});
+FactionCountryExclude.belongsTo(Faction, {
+  as: 'faction',
+  foreignKey: 'fid',
+});
+
 export {
   sync,
   sequelize,
@@ -416,6 +452,12 @@ export {
   WhoisReferral,
   ThreePID,
   Fish,
+  Faction,
+  FactionMember,
+  FactionBan,
+  FactionCountryExclude,
+  FactionInvite,
+  FactionJoinRequest,
   // constants
   USERLVL,
   THREEPID_PROVIDERS,

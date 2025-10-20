@@ -13,6 +13,7 @@ import { getCooldownFactor } from './CooldownModifiers.js';
 import { setPixelByOffset } from './setPixel.js';
 import { getState } from './SharedState.js';
 import canvases from './canvases.js';
+import { getUserFactionId, incFactionPixels } from '../data/redis/factions.js';
 
 import {
   THREE_CANVAS_HEIGHT, THREE_TILE_SIZE, TILE_SIZE,
@@ -235,6 +236,12 @@ export default async function drawByOffsets(
 
     if (ranked && userId) {
       rankedPxlCnt = pxlCnt;
+      try {
+        const fid = await getUserFactionId(userId);
+        if (fid) {
+          await incFactionPixels(fid, pxlCnt);
+        }
+      } catch {}
     }
 
     const duration = Date.now() - startTime;

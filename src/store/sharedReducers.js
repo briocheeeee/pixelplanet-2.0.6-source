@@ -17,6 +17,7 @@ import chat from './reducers/chat.js';
 import fetching from './reducers/fetching.js';
 import profile from './reducers/profile.js';
 import announcement from './reducers/announcement.js';
+import factions from './reducers/factions.js';
 
 
 export const migrate = (state, version) => {
@@ -39,7 +40,7 @@ const guiPersist = persistReducer({
 const ranksPersist = persistReducer({
   key: 'ranks',
   storage,
-  version: 19,
+  version: 20,
   migrate,
 }, ranks);
 
@@ -76,4 +77,5 @@ export default {
   fetching,
   profile,
   announcement,
+  factions,
 };

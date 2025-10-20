@@ -8,6 +8,7 @@ import { t } from 'ttag';
 import DeleteList from './DeleteList.jsx';
 import AnnouncementBar from './AnnouncementBar.jsx';
 import { api } from '../utils/utag.js';
+import { requestFactionAdminList, requestFactionAdminDelete } from '../store/actions/fetch.js';
 
 async function submitIPAction(
   action,
@@ -121,6 +122,10 @@ function Admintools() {
   const [gameState, setGameState] = useState([]);
   const [submitting, setSubmitting] = useState(false);
   const [annPreview, setAnnPreview] = useState(false);
+  const [fq, setFq] = useState('');
+  const [fpage, setFpage] = useState(1);
+  const [frows, setFrows] = useState([]);
+  const [fbusy, setFbusy] = useState(false);
 
   useEffect(() => {
     getModList((mods) => setModList(mods));
@@ -207,6 +212,97 @@ function Admintools() {
         </button>
         <br />
         <div className="modaldivider" />
+
+        <h3>{t`Factions`}</h3>
+        <div>
+          <input
+            value={fq}
+            onChange={(e) => setFq(e.target.value)}
+            placeholder={t`Search name`}
+            style={{ width: '100%', maxWidth: '20em' }}
+          />
+          <button
+            type="button"
+            onClick={async () => {
+              if (fbusy) return;
+              setFbusy(true);
+              const ret = await requestFactionAdminList(fq, 1, 20);
+              setFbusy(false);
+              setFrows((ret && ret.data) ? ret.data : []);
+              setFpage(1);
+            }}
+          >{(fbusy) ? '...' : t`Search`}</button>
+        </div>
+        <div>
+          <table style={{ display: 'inline' }}>
+            <thead>
+              <tr>
+                <th>{t`ID`}</th>
+                <th>{t`Tag`}</th>
+                <th>{t`Name`}</th>
+                <th>{t`Members`}</th>
+                <th>{t`Actions`}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {frows.map((r) => (
+                <tr key={r.id}>
+                  <td className="c-num">{r.id}</td>
+                  <td>{r.tag}</td>
+                  <td>{r.name}</td>
+                  <td className="c-num">{r.memberCount}</td>
+                  <td>
+                    <span
+                      role="button"
+                      tabIndex={-1}
+                      className="modallink"
+                      onClick={async () => {
+                        if (fbusy) return;
+                        setFbusy(true);
+                        const ok = await requestFactionAdminDelete(r.id);
+                        setFbusy(false);
+                        if (!ok.errors) {
+                          setFrows(frows.filter((x) => x.id !== r.id));
+                        }
+                      }}
+                    >{t`Delete`}</span>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <div style={{ marginTop: 6 }}>
+            <span
+              role="button"
+              tabIndex={-1}
+              className="modallink"
+              onClick={async () => {
+                if (fpage <= 1 || fbusy) return;
+                const np = fpage - 1;
+                setFbusy(true);
+                const ret = await requestFactionAdminList(fq, np, 20);
+                setFbusy(false);
+                setFrows((ret && ret.data) ? ret.data : []);
+                setFpage(np);
+              }}
+            >{t`Prev`}</span>
+            <span className="hdivider" />
+            <span
+              role="button"
+              tabIndex={-1}
+              className="modallink"
+              onClick={async () => {
+                if (fbusy) return;
+                const np = fpage + 1;
+                setFbusy(true);
+                const ret = await requestFactionAdminList(fq, np, 20);
+                setFbusy(false);
+                setFrows((ret && ret.data) ? ret.data : []);
+                setFpage(np);
+              }}
+            >{t`Next`}</span>
+          </div>
+        </div>
 
         <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
           <div style={{ width: '100%', maxWidth: '40em' }}>

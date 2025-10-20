@@ -58,8 +58,6 @@ const expressStatic = express.static(
   },
 );
 
-// serve avatars explicitly to ensure availability regardless of other routing
-// serve avatars explicitly to ensure availability regardless of other routing
 (() => {
   const cwdPublic = path.join(process.cwd(), 'public');
   let avatarDir;
@@ -74,7 +72,25 @@ const expressStatic = express.static(
     try { fs.mkdirSync(avatarDir, { recursive: true }); } catch {}
   }
   router.use('/avatars', express.static(avatarDir, { maxAge: 12 * MONTH }));
+  let favatarDir;
+  if (fs.existsSync(cwdPublic)) {
+    favatarDir = path.join(cwdPublic, 'favatars');
+  } else if (fs.existsSync(path.join(__dirname, '..', 'public'))) {
+    favatarDir = path.join(__dirname, '..', 'public', 'favatars');
+  } else {
+    favatarDir = path.join(__dirname, 'public', 'favatars');
+  }
+  if (!fs.existsSync(favatarDir)) {
+    try { fs.mkdirSync(favatarDir, { recursive: true }); } catch {}
+  }
+  router.use('/favatars', express.static(favatarDir, { maxAge: 12 * MONTH }));
 })();
+
+router.get('/invite/:code', (req, res) => {
+  const base = BASENAME || '';
+  const code = encodeURIComponent(req.params.code);
+  res.redirect(`${base}/?invite=${code}`);
+});
 
 /* ip */
 router.use(parseIP);

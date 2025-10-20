@@ -26,6 +26,7 @@ import {
   BOT_USER_NAME,
 } from './constants.js';
 import { getState } from './SharedState.js';
+import { getUserFactionTag } from '../data/redis/factions.js';
 
 function getUserFromMd(mdUserLink) {
   let mdUser = mdUserLink.trim();
@@ -401,8 +402,13 @@ export class ChatProvider {
     logger.info(
       `Received chat message ${message} from ${name} / ${ip.ipString}`,
     );
+    let displayName = name;
+    try {
+      const tag = await getUserFactionTag(id);
+      if (tag) displayName = `[${tag}] ${name}`;
+    } catch {}
     this.broadcastChatMessage(
-      name,
+      displayName,
       message,
       channelId,
       id,

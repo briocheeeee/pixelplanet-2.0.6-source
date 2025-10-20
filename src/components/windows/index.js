@@ -11,6 +11,7 @@ import Player from './Player.jsx';
 import FishDisplay from './FishDisplay.jsx';
 import ForgotPassword from './ForgotPassword.jsx';
 import UserProfile from './UserProfile.jsx';
+import FactionProfile from './FactionProfile.jsx';
 
 export default {
   HELP: [Help, t`Help`],
@@ -24,6 +25,7 @@ export default {
   PLAYER: [Player, t`Player`],
   FISH_DISPLAY: [FishDisplay, t`Fish Display`],
   USER_PROFILE: [UserProfile, t`User Profile`],
+  FACTION_PROFILE: [FactionProfile, t`Faction Profile`],
   /* other windows */
 };
 

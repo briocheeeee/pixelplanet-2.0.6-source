@@ -35,8 +35,9 @@ const scripts = {
     },
     transformReply(arr) {
       return arr.map((r) => {
-        const rank = Number(r);
-        return rank || null;
+        if (r === null || r === undefined) return null;
+        const n = Number(r);
+        return Number.isFinite(n) ? (n + 1) : null;
       });
     },
   },

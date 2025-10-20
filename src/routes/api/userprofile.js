@@ -1,5 +1,6 @@
 import { getFishesOfUser } from '../../data/sql/Fish.js';
 import { User } from '../../data/sql/index.js';
+import { getUserFactionTag } from '../../data/redis/factions.js';
 import { USER_FLAGS } from '../../data/sql/User.js';
 import { getUserRanks } from '../../data/redis/ranks.js';
 
@@ -23,9 +24,10 @@ export default async (req, res) => {
     res.status(200).json({ private: true });
     return;
   }
-  const [fishes, ranks] = await Promise.all([
+  const [fishes, ranks, ftag] = await Promise.all([
     getFishesOfUser(uid),
     getUserRanks(uid),
+    getUserFactionTag(uid),
   ]);
   let avatar = target.avatar || null;
   if (typeof avatar === 'string') {
@@ -43,6 +45,7 @@ export default async (req, res) => {
       name: target.name,
       username: target.username,
       avatar,
+      factionTag: ftag || null,
     },
     stats: {
       totalPixels: totalPixels || 0,

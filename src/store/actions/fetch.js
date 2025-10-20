@@ -9,6 +9,76 @@ import { t } from 'ttag';
 import { dateToString, stringToTime } from '../../core/utils.js';
 import { api } from '../../utils/utag.js';
 
+const __reqCache = new Map();
+const __pending = new Map();
+
+function __ttlFor(url) {
+  if (url.includes('/api/factions/leaderboard')) return 15000;
+  if (url.includes('/api/factions/bytag')) return 15000;
+  if (url.includes('/api/factions/profile')) return 15000;
+  if (url.includes('/api/factions/mine')) return 3000;
+  return 0;
+}
+
+function __cdKey(url) {
+  try {
+    const u = new URL(url, window.location.origin);
+    return `fc:cd:${u.pathname}`;
+  } catch {
+    return `fc:cd:${url}`;
+  }
+}
+function __cooldownActive(url) {
+  try {
+    const k = __cdKey(url);
+    const v = Number(sessionStorage.getItem(k) || 0);
+    return v && v > Date.now();
+  } catch { return false; }
+}
+function __setCooldown(url, ms) {
+  try {
+    const k = __cdKey(url);
+    sessionStorage.setItem(k, String(Date.now() + Math.max(1000, Number(ms) || 60000)));
+  } catch {}
+}
+
+function __cacheGet(url) {
+  const e = __reqCache.get(url);
+  if (!e) {
+    try {
+      const raw = sessionStorage.getItem(`fc:${url}`);
+      if (raw) {
+        const o = JSON.parse(raw);
+        if (o && o.t && o.d && (Date.now() - o.t) < (__ttlFor(url) || 0)) return o.d;
+      }
+    } catch {}
+    return null;
+  }
+  if (e.x < Date.now()) { __reqCache.delete(url); return null; }
+  return e.v;
+}
+
+function __cacheSet(url, data) {
+  const ttl = __ttlFor(url);
+  if (ttl <= 0) return;
+  __reqCache.set(url, { v: data, x: Date.now() + ttl });
+  try { sessionStorage.setItem(`fc:${url}`, JSON.stringify({ t: Date.now(), d: data })); } catch {}
+}
+
+function __invalidateFactionCaches() {
+  const keys = Array.from(__reqCache.keys());
+  const parts = ['/api/factions/leaderboard', '/api/factions/profile', '/api/factions/bytag', '/api/factions/mine'];
+  keys.forEach((k) => { if (parts.some((p) => k.includes(p))) __reqCache.delete(k); });
+  try {
+    Object.keys(sessionStorage).forEach((k) => {
+      if (k.startsWith('fc:')) {
+        const u = k.slice(3);
+        if (parts.some((p) => u.includes(p))) sessionStorage.removeItem(k);
+      }
+    });
+  } catch {}
+}
+
 /*
  * Adds customizable timeout to fetch
  * defaults to 8s
@@ -26,6 +96,109 @@ async function fetchWithTimeout(url, options = {}) {
   clearTimeout(id);
 
   return response;
+}
+
+export async function requestFactionAdminList(q = '', page = 1, size = 20) {
+  const qs = new URLSearchParams();
+  if (q) qs.set('q', q);
+  qs.set('page', String(page));
+  qs.set('size', String(size));
+  return makeAPIGETRequest(`/api/factions/admin/list?${qs.toString()}`);
+}
+
+export async function requestFactionAdminDelete(fid) {
+  return makeAPIPOSTRequest('/api/factions/admin/delete', { fid });
+}
+
+export async function requestFactionLeaderboard(page = 1, size = 20) {
+  return makeAPIGETRequest(`/api/factions/leaderboard?page=${page}&size=${size}`);
+}
+
+export async function requestFactionMine() {
+  return makeAPIGETRequest('/api/factions/mine');
+}
+
+export async function requestFactionCreate(name, tag, joinPolicy) {
+  return makeAPIPOSTRequest('/api/factions/create', { name, tag, joinPolicy });
+}
+
+export async function requestFactionJoin(fid) {
+  return makeAPIPOSTRequest('/api/factions/join', { fid });
+}
+
+export async function requestFactionLeave() {
+  return makeAPIPOSTRequest('/api/factions/leave', {});
+}
+
+export async function requestFactionApprove(uid) {
+  return makeAPIPOSTRequest('/api/factions/approve', { uid });
+}
+
+export async function requestFactionDeny(uid) {
+  return makeAPIPOSTRequest('/api/factions/deny', { uid });
+}
+
+export async function requestFactionKick(uid) {
+  return makeAPIPOSTRequest('/api/factions/kick', { uid });
+}
+
+export async function requestFactionBan(uid) {
+  return makeAPIPOSTRequest('/api/factions/ban', { uid });
+}
+
+export async function requestFactionUnban(uid) {
+  return makeAPIPOSTRequest('/api/factions/unban', { uid });
+}
+
+export async function requestFactionExclude(country) {
+  return makeAPIPOSTRequest('/api/factions/exclude', { country });
+}
+
+export async function requestFactionInclude(country) {
+  return makeAPIPOSTRequest('/api/factions/include', { country });
+}
+
+export async function requestFactionUpdate(payload) {
+  return makeAPIPOSTRequest('/api/factions/update', payload);
+}
+
+export async function requestFactionTransfer(newOwnerId, password) {
+  return makeAPIPOSTRequest('/api/factions/transfer', { newOwnerId, password });
+}
+
+export async function requestFactionDelete(password) {
+  return makeAPIPOSTRequest('/api/factions/delete', { password });
+}
+
+export async function requestFactionProfile(fid) {
+  return makeAPIGETRequest(`/api/factions/profile?fid=${fid}`);
+}
+
+export async function requestFactionByTag(tag) {
+  return makeAPIGETRequest(`/api/factions/bytag?tag=${encodeURIComponent(tag)}`);
+}
+
+export async function requestFactionInvites() {
+  return makeAPIGETRequest('/api/factions/invites');
+}
+
+export async function requestFactionAcceptInvite(code) {
+  return makeAPIPOSTRequest('/api/factions/accept_invite', { code });
+}
+
+export async function requestFactionAvatar(file) {
+  const url = api`/api/factions/avatar`;
+  try {
+    const response = await fetch(url, {
+      method: 'POST',
+      credentials: 'include',
+      headers: { 'Content-Type': 'application/octet-stream' },
+      body: file,
+    });
+    return parseAPIresponse(response);
+  } catch (e) {
+    return { errors: [t`Could not connect to server, please try again later :(`] };
+  }
 }
 
 /*
@@ -82,7 +255,15 @@ async function makeAPIPOSTRequest(
       body: JSON.stringify(body),
     });
 
-    return parseAPIresponse(response);
+    if (response.status === 429) {
+      const ra = Number(response.headers.get('Retry-After') || 0) * 1000;
+      __setCooldown(url, ra || 60000);
+    }
+    const out = await parseAPIresponse(response);
+    if (!out?.errors && String(url).includes('/api/factions/')) {
+      __invalidateFactionCaches();
+    }
+    return out;
   } catch (e) {
     return {
       errors: [t`Could not connect to server, please try again later :(`],
@@ -104,15 +285,33 @@ async function makeAPIGETRequest(
     url = api`${url}`;
   }
   try {
-    const response = await fetchWithTimeout(url, {
-      credentials: (credentials) ? 'include' : 'omit',
-    });
-
-    return parseAPIresponse(response);
+    if (__cooldownActive(url)) {
+      const cached = __cacheGet(url);
+      if (cached) return cached;
+      return { errors: [t`You made too many requests`] };
+    }
+    const cached = __cacheGet(url);
+    if (cached) return cached;
+    const pend = __pending.get(url);
+    if (pend) return pend;
+    const p = (async () => {
+      const response = await fetchWithTimeout(url, {
+        credentials: (credentials) ? 'include' : 'omit',
+      });
+      if (response.status === 429) {
+        const ra = Number(response.headers.get('Retry-After') || 0) * 1000;
+        __setCooldown(url, ra || 60000);
+      }
+      const out = await parseAPIresponse(response);
+      if (!out?.errors) __cacheSet(url, out);
+      return out;
+    })();
+    __pending.set(url, p);
+    try { return await p; } finally { __pending.delete(url); }
   } catch (e) {
-    return {
-      errors: [t`Could not connect to server, please try again later :(`],
-    };
+    const cached = __cacheGet(url);
+    if (cached) return cached;
+    return { errors: [t`Could not connect to server, please try again later :(`] };
   }
 }
 
@@ -343,6 +542,7 @@ export function requestRemoveTpid(id, password) {
 export function requestRankings() {
   return makeAPIGETRequest(
     '/ranking',
+    false,
     false,
   );
 }

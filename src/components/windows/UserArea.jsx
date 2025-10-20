@@ -22,6 +22,8 @@ const Rankings = React.lazy(() => import(/* webpackChunkName: "stats" */ '../Ran
 const Converter = React.lazy(() => import(/* webpackChunkName: "converter" */ '../Converter.jsx'));
 // eslint-disable-next-line max-len
 const Modtools = React.lazy(() => import(/* webpackChunkName: "modtools" */ '../Modtools.jsx'));
+// eslint-disable-next-line max-len
+const Factions = React.lazy(() => import(/* webpackChunkName: "factions" */ '../Factions.jsx'));
 
 const UserArea = () => {
   const id = useSelector((state) => state.user.id);
@@ -65,6 +67,7 @@ const UserArea = () => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lastProfileFetch, id]);
 
+
   return (
     <div style={{ textAlign: 'center' }}>
       <Tabs activeTab={activeTab} setActiveTab={setActiveTab}>
@@ -74,6 +77,11 @@ const UserArea = () => {
         <div label={t`Statistics`}>
           <Suspense fallback={<div>Loading...</div>}>
             <Rankings />
+          </Suspense>
+        </div>
+        <div label={t`Factions`}>
+          <Suspense fallback={<div>Loading...</div>}>
+            <Factions />
           </Suspense>
         </div>
         <div label={t`Converter`}>
