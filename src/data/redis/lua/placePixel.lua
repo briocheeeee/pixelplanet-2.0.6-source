@@ -122,16 +122,16 @@ if ARGV[9] == "0" and pxlcnt > 0 then
     end
   end
   -- increment pixelcount
-  if KEYS[6] ~= "nope" then
-    -- daily and total rank
-    if ARGV[6] ~= "0" then
-      redis.call('zincrby', KEYS[5], pxlcnt, ARGV[6])
+  if ARGV[6] ~= "0" and KEYS[5] ~= "nope" then
+    redis.call('zincrby', KEYS[5], pxlcnt, ARGV[6])
+    -- update daily rank only if enabled
+    if KEYS[6] ~= "nope" then
       redis.call('zincrby', KEYS[6], pxlcnt, ARGV[6])
     end
-    -- country stats
-    if ARGV[7] ~= "xx" then
-      redis.call('zincrby', KEYS[7], pxlcnt, ARGV[7])
-    end
+  end
+  
+  if KEYS[6] ~= "nope" and ARGV[7] ~= "xx" then
+    redis.call('zincrby', KEYS[7], pxlcnt, ARGV[7])
   end
 end
 

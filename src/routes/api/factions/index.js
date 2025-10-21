@@ -23,6 +23,7 @@ import {
   setLeaveCooldown,
   getTagsForUsers,
   removeFactionFromRanks,
+  getFactionRankFor,
 } from '../../../data/redis/factions.js';
 import { addFactionToRanks } from '../../../data/redis/factions.js';
 import { getNamesToIds, findUserById } from '../../../data/sql/User.js';
@@ -115,8 +116,7 @@ router.get('/profile', async (req, res) => {
     res.status(404).json({ errors: ['not found'] });
     return;
   }
-  const ranks = await getFactionRanks(1, 1000);
-  const rank = ranks.find((r) => r.id === fid) || { t: 0, dt: 0, r: 0 };
+  const rank = await getFactionRankFor(fid);
   const joinable = f.joinPolicy !== 2;
   const payload = {
     faction: f,
@@ -492,8 +492,7 @@ router.get('/bytag', async (req, res) => {
   if (c) { res.set('Cache-Control', 'private, max-age=15'); res.json(c); return; }
   const f = await Faction.findOne({ where: { tag }, raw: true });
   if (!f) { res.status(404).json({ errors: ['not found'] }); return; }
-  const ranks = await getFactionRanks(1, 1000);
-  const rank = ranks.find((r) => r.id === f.id) || { t: 0, dt: 0, r: 0 };
+  const rank = await getFactionRankFor(f.id);
   const payload = {
     faction: f,
     stats: { totalPixels: rank.t, dailyPixels: rank.dt, rank: rank.r },

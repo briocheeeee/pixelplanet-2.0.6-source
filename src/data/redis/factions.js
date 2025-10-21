@@ -10,6 +10,29 @@ const UFID_PREFIX = 'ufid:';
 const UTAG_PREFIX = 'utag:';
 const UCD_PREFIX = 'fcd:';
 
+async function topWithScores(key, start, end) {
+  try {
+    return await client.zRangeWithScores(key, start, end, { REV: true });
+  } catch (e) {
+    try {
+      const arr = await client.sendCommand(['ZREVRANGE', key, String(start), String(end), 'WITHSCORES']);
+      const ret = [];
+      for (let i = 0; i < arr.length; i += 2) {
+        ret.push({ value: arr[i], score: Number(arr[i + 1]) });
+      }
+      return ret;
+    } catch {
+      const vals = await client.zRevRange(key, start, end);
+      const scores = vals.length ? await client.zmScore(key, vals) : [];
+      const ret = [];
+      for (let i = 0; i < vals.length; i += 1) {
+        ret.push({ value: vals[i], score: Number(scores[i] || 0) });
+      }
+      return ret;
+    }
+  }
+}
+
 export async function getUserFactionId(uid) {
   const v = await client.get(`${UFID_PREFIX}${uid}`);
   return v ? Number(v) : 0;
@@ -44,7 +67,7 @@ export async function incFactionPixels(fid, cnt) {
 export async function getFactionRanks(start, amount) {
   const s = Math.max(0, Number(start || 1) - 1);
   const a = Math.max(1, Number(amount || 50));
-  const ranks = await client.zRangeWithScores(F_TOTAL_KEY, s, s + a - 1, { REV: true });
+  const ranks = await topWithScores(F_TOTAL_KEY, s, s + a - 1);
   const fids = ranks.map((r) => r.value);
   if (!fids.length) return [];
   const daily = await client.zmScore(F_DAILY_KEY, fids);
@@ -53,6 +76,21 @@ export async function getFactionRanks(start, amount) {
     ret.push({ id: Number(fids[i]), t: Number(ranks[i].score), dt: Number(daily[i] || 0), r: s + i + 1 });
   }
   return ret;
+}
+
+export async function getFactionRankFor(fid) {
+  const id = String(fid);
+  const [t, dt, r] = await Promise.all([
+    client.zScore(F_TOTAL_KEY, id),
+    client.zScore(F_DAILY_KEY, id),
+    client.zRevRank(F_TOTAL_KEY, id),
+  ]);
+  return {
+    id: Number(fid),
+    t: Number(t || 0),
+    dt: Number(dt || 0),
+    r: (typeof r === 'number') ? (Number(r) + 1) : 0,
+  };
 }
 
 export async function resetDailyFactionRanks() {

@@ -79,10 +79,10 @@ export default function ranks(
         dailyRanking,
       } = action;
       const nextTotalPixels = (typeof totalPixels === 'number')
-        ? Math.max(totalPixels, state.totalPixels)
+        ? totalPixels
         : state.totalPixels;
       const nextDailyTotalPixels = (typeof dailyTotalPixels === 'number')
-        ? Math.max(dailyTotalPixels, state.dailyTotalPixels)
+        ? dailyTotalPixels
         : state.dailyTotalPixels;
       return {
         ...state,

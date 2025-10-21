@@ -18,6 +18,37 @@ const PREV_HOURLY_PLACED_KEY = 'tmph';
 const HOURLY_PXL_CNTR_KEY = 'thpx';
 const DAILY_PXL_CNTR_KEY = 'tdpx';
 
+async function zTopWithScores(key, start, end) {
+  try {
+    return await client.zRangeWithScores(key, start, end, { REV: true });
+  } catch (e) {
+    try {
+      const arr = await client.sendCommand(['ZREVRANGE', key, String(start), String(end), 'WITHSCORES']);
+      const ret = [];
+      for (let i = 0; i < arr.length; i += 2) {
+        ret.push({ value: arr[i], score: Number(arr[i + 1]) });
+      }
+      return ret;
+    } catch {
+      const vals = await client.zRevRange(key, start, end);
+      const scores = vals.length ? await client.zmScore(key, vals) : [];
+      const ret = [];
+      for (let i = 0; i < vals.length; i += 1) {
+        ret.push({ value: vals[i], score: Number(scores[i] || 0) });
+      }
+      return ret;
+    }
+  }
+}
+
+async function zStoreTop(dst, src, start, end) {
+  const data = await zTopWithScores(src, start, end);
+  await client.del(dst);
+  if (data.length) {
+    await client.zAdd(dst, data.map((r) => ({ score: Number(r.score), value: r.value })));
+  }
+}
+
 /*
  * get pixelcount and ranking
  * @param userId
@@ -62,9 +93,7 @@ export async function getRanks(daily, start, amount) {
     oRankName = 'dr';
   }
   /* returns { value: uid, score: pixelCnt } */
-  const ranks = await client.zRangeWithScores(key, start, start + amount, {
-    REV: true,
-  });
+  const ranks = await zTopWithScores(key, start, start + amount);
   const uids = ranks.map((r) => r.value);
   if (!uids.length) {
     return uids;
@@ -92,10 +121,9 @@ export async function getRanks(daily, start, amount) {
 export async function getCountryRanks(start, amount) {
   start -= 1;
   amount -= 1;
-  let ranks = await client.zRangeWithScores(
-    DAILY_CRANKED_KEY, start, start + amount, {
-      REV: true,
-    });
+  let ranks = await zTopWithScores(
+    DAILY_CRANKED_KEY, start, start + amount,
+  );
   ranks = ranks.map((r) => ({
     cc: r.value,
     px: Number(r.score),
@@ -109,10 +137,9 @@ export async function getCountryRanks(start, amount) {
 export async function getHourlyCountryStats(start, amount) {
   start -= 1;
   amount -= 1;
-  let ranks = await client.zRangeWithScores(
-    HOURLY_CRANKED_KEY, start, start + amount, {
-      REV: true,
-    });
+  let ranks = await zTopWithScores(
+    HOURLY_CRANKED_KEY, start, start + amount,
+  );
   ranks = ranks.map((r) => ({
     cc: r.value,
     px: Number(r.score),
@@ -125,25 +152,29 @@ export async function storeHourlyCountryStats(start, amount) {
   amount -= 1;
   const tsNow = Date.now();
   const prevTs = Number(await client.get(PREV_DAILY_CRANKED_TS_KEY));
-  const prevData = await client.zRangeWithScores(
-    PREV_DAILY_CRANKED_KEY, start, start + amount, {
-      REV: true,
-    });
+  const prevData = await zTopWithScores(
+    PREV_DAILY_CRANKED_KEY, start, start + amount,
+  );
 
+  try {
+    await client.copy(DAILY_CRANKED_KEY, PREV_DAILY_CRANKED_KEY, { replace: true });
+  } catch {
+    await client.del(PREV_DAILY_CRANKED_KEY);
+    const all = await client.zRangeWithScores(DAILY_CRANKED_KEY, 0, -1);
+    if (all.length) {
+      await client.zAdd(PREV_DAILY_CRANKED_KEY, all.map((r) => ({ score: Number(r.score), value: r.value })));
+    }
+  }
   await Promise.all([
-    client.copy(DAILY_CRANKED_KEY, PREV_DAILY_CRANKED_KEY, {
-      replace: true,
-    }),
     client.set(PREV_DAILY_CRANKED_TS_KEY, String(tsNow)),
     client.del(HOURLY_CRANKED_KEY),
   ]);
 
   if (prevTs && prevTs > tsNow - 1000 * 3600 * 1.5) {
     const dataPromises = [
-      client.zRangeWithScores(
-        DAILY_CRANKED_KEY, start, start + amount, {
-          REV: true,
-        }),
+      zTopWithScores(
+        DAILY_CRANKED_KEY, start, start + amount,
+      ),
     ];
 
     /*
@@ -225,9 +256,7 @@ export async function storeHourlyCountryStats(start, amount) {
  * get top 10 from previous day
  */
 export async function getPrevTop() {
-  let prevTop = await client.zRangeWithScores(PREV_DAY_TOP_KEY, 0, 9, {
-    REV: true,
-  });
+  let prevTop = await zTopWithScores(PREV_DAY_TOP_KEY, 0, 9);
   prevTop = prevTop.map((r) => ({
     id: Number(r.value),
     px: Number(r.score),
@@ -321,9 +350,7 @@ export async function getTopDailyHistory() {
     const dateKey = getDateKeyOfTs(ts);
     const key = `${DAY_STATS_RANKS_KEY}:${dateKey}`;
     // eslint-disable-next-line no-await-in-loop
-    let dData = await client.zRangeWithScores(key, 0, 9, {
-      REV: true,
-    });
+    let dData = await zTopWithScores(key, 0, 9);
     dData = dData.map((r) => {
       const id = Number(r.value);
       if (!users.some((q) => q.id === id)) {
@@ -359,9 +386,7 @@ export async function getCountryDailyHistory() {
       key = `${CDAY_STATS_RANKS_KEY}:${dateKey}`;
     }
     // eslint-disable-next-line no-await-in-loop
-    let dData = await client.zRangeWithScores(key, 0, 9, {
-      REV: true,
-    });
+    let dData = await zTopWithScores(key, 0, 9);
     dData = dData.map((r) => ({
       cc: r.value,
       px: Number(r.score),
@@ -377,9 +402,7 @@ export async function getCountryDailyHistory() {
  */
 export async function resetDailyRanks() {
   // store top 10
-  await client.zRangeStore(PREV_DAY_TOP_KEY, DAILY_RANKED_KEY, 0, 9, {
-    REV: true,
-  });
+  await zStoreTop(PREV_DAY_TOP_KEY, DAILY_RANKED_KEY, 0, 9);
   // store day
   const dateKey = getDateKeyOfTs(
     Date.now() - 1000 * 3600 * 24,

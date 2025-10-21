@@ -59,7 +59,7 @@ export default function allowPlace(
   }
   const chunkKey = `ch:${canvasId}:${i}:${j}`;
   const cc = country || 'xx';
-  const rankset = RANKED_KEY;
+  const rankset = (ranked) ? RANKED_KEY : 'nope';
   const dailyset = (ranked) ? DAILY_RANKED_KEY : 'nope';
   /* eslint-disable max-len */
   return client.placePixel(
@@ -132,6 +132,6 @@ export async function setCoolDown(
 export function deleteUserFromRanks(id) {
   return Promise.all([
     client.zRem(RANKED_KEY, String(id)),
-    client.zRem(DAILY_CRANKED_KEY, String(id)),
+    client.zRem(DAILY_RANKED_KEY, String(id)),
   ]);
 }

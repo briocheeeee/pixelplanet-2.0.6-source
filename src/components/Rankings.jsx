@@ -4,8 +4,8 @@
 
 /* eslint-disable max-len */
 
-import React, { useState, useMemo } from 'react';
-import { shallowEqual, useSelector } from 'react-redux';
+import React, { useState, useMemo, useEffect } from 'react';
+import { shallowEqual, useSelector, useDispatch } from 'react-redux';
 import { t } from 'ttag';
 import {
   Chart as ChartJS,
@@ -38,6 +38,7 @@ import {
   getPDailyStatsData,
 } from '../core/chartSettings.js';
 import CooldownChanges from './CooldownChanges.jsx';
+import { fetchStats } from '../store/actions/thunks.js';
 
 ChartJS.register(
   CategoryScale,
@@ -53,6 +54,7 @@ ChartJS.register(
 );
 
 const Rankings = () => {
+  const dispatch = useDispatch();
   const [area, setArea] = useState('total');
   const [
     totalRanking,
@@ -137,6 +139,12 @@ const Rankings = () => {
     }
     return getCPieOpts();
   }, [area]);
+
+  useEffect(() => {
+    if (area === 'today') {
+      dispatch(fetchStats());
+    }
+  }, [area, dispatch]);
 
   return (
     <>

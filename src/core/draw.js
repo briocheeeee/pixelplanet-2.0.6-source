@@ -133,7 +133,7 @@ export default async function drawByOffsets(
     /*
      * validate pixels
      */
-    let ranked = canvas.ranked && pcd;
+    let ranked = (canvas.ranked ?? true);
     for (let u = 0; u < pixels.length; u += 1) {
       const [offset, color] = pixels[u];
       pxlOffsets.push(offset);

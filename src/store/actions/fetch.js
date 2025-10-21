@@ -540,8 +540,9 @@ export function requestRemoveTpid(id, password) {
 }
 
 export function requestRankings() {
+  const ts = Date.now();
   return makeAPIGETRequest(
-    '/ranking',
+    `/ranking?ts=${ts}`,
     false,
     false,
   );
