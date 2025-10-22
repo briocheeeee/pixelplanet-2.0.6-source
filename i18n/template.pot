@@ -3,240 +3,76 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
 
-#: src\ui\rendererFactory.js:32
-msgid "Canvas Error"
+#: src\components\windows\Chat.jsx:208
+msgid "Start chatting here"
 msgstr ""
 
-#: src\ui\rendererFactory.js:33
-msgid "Can't render 3D canvas, do you have WebGL2 disabled?"
+#: src\components\windows\Chat.jsx:269
+msgid "Chat here"
 msgstr ""
 
-#: src\controls\keypress.js:107
+#: src\components\windows\Chat.jsx:315
+msgid "You must be logged in to chat"
+msgstr ""
+
+#: src\components\windows\Chat.jsx:345
+msgid "Channel settings"
+msgstr ""
+
+#: src\store\actions\fetch.js:200
+#: src\store\actions\fetch.js:269
+#: src\store\actions\fetch.js:314
+#: src\store\actions\fetch.js:626
+msgid "Could not connect to server, please try again later :("
+msgstr ""
+
+#: src\store\actions\fetch.js:213
+#: src\store\actions\fetch.js:291
+msgid "You made too many requests"
+msgstr ""
+
+#: src\store\actions\fetch.js:217
 #, javascript-format
-msgid "Switched to ${ canvasName }"
+msgid "try again after ${ ti }min"
 msgstr ""
 
-#: src\controls\keypress.js:181
-msgid "Grid ON"
-msgstr ""
-
-#: src\controls\keypress.js:182
-msgid "Grid OFF"
-msgstr ""
-
-#: src\controls\keypress.js:192
-msgid "Pixel Notify ON"
-msgstr ""
-
-#: src\controls\keypress.js:193
-msgid "Pixel Notify OFF"
-msgstr ""
-
-#: src\controls\keypress.js:198
-msgid "Muted Sound"
-msgstr ""
-
-#: src\controls\keypress.js:199
-msgid "Unmuted Sound"
-msgstr ""
-
-#: src\controls\keypress.js:208
-msgid "Copied"
-msgstr ""
-
-#: src\controls\keypress.js:214
-msgid "Overlay ON"
-msgstr ""
-
-#: src\controls\keypress.js:215
-msgid "Overlay OFF"
-msgstr ""
-
-#: src\controls\keypress.js:221
-msgid "Easter Egg ON"
-msgstr ""
-
-#: src\controls\keypress.js:222
-msgid "Easter Egg OFF"
-msgstr ""
-
-#: src\ui\PixelTransferController.js:70
-#: src\ui\PixelTransferController.js:165
-msgid "Timeout"
-msgstr ""
-
-#: src\ui\PixelTransferController.js:72
-#: src\ui\PixelTransferController.js:167
-msgid ""
-"Didn't get an answer from pixelplanet. Try to refresh if this problem "
-"persists."
-msgstr ""
-
-#: src\ui\PixelTransferController.js:104
-msgid "Invalid Canvas"
-msgstr ""
-
-#: src\ui\PixelTransferController.js:105
-msgid "This canvas doesn't exist"
-msgstr ""
-
-#: src\ui\PixelTransferController.js:108
-#: src\ui\PixelTransferController.js:112
-#: src\ui\PixelTransferController.js:116
-msgid "Invalid Coordinates"
-msgstr ""
-
-#: src\ui\PixelTransferController.js:109
-msgid "x out of bounds"
-msgstr ""
-
-#: src\ui\PixelTransferController.js:113
-msgid "y out of bounds"
-msgstr ""
-
-#: src\ui\PixelTransferController.js:117
-msgid "z out of bounds"
-msgstr ""
-
-#: src\ui\PixelTransferController.js:120
-msgid "Wrong Color"
-msgstr ""
-
-#: src\ui\PixelTransferController.js:121
-msgid "Invalid color selected"
-msgstr ""
-
-#: src\ui\PixelTransferController.js:124
-msgid "Just for registered Users"
-msgstr ""
-
-#: src\ui\PixelTransferController.js:125
-msgid "You have to be logged in to place on this canvas"
-msgstr ""
-
-#: src\ui\PixelTransferController.js:128
-#: src\ui\PixelTransferController.js:144
-#: src\ui\PixelTransferController.js:148
-msgid "Not allowed"
-msgstr ""
-
-#: src\ui\PixelTransferController.js:130
-msgid "You can not access this canvas yet, because your pixel score is too low"
-msgstr ""
-
-#: src\ui\PixelTransferController.js:133
-msgid "Pixel protected"
-msgstr ""
-
-#: src\ui\PixelTransferController.js:140
-msgid "Please prove that you are human"
-msgstr ""
-
-#: src\ui\PixelTransferController.js:145
-msgid "You are using a Proxy."
-msgstr ""
-
-#: src\ui\PixelTransferController.js:149
-msgid "Just the Top10 of yesterday can place here"
-msgstr ""
-
-#: src\ui\PixelTransferController.js:152
-msgid "You are weird"
-msgstr ""
-
-#: src\ui\PixelTransferController.js:154
-msgid "Server got confused by your pixels. Are you playing on multiple devices?"
-msgstr ""
-
-#: src\ui\PixelTransferController.js:157
-msgid "Banned"
-msgstr ""
-
-#: src\ui\PixelTransferController.js:161
-msgid "Range Banned"
-msgstr ""
-
-#: src\ui\PixelTransferController.js:162
-msgid "Your Internet Provider is banned from this game"
-msgstr ""
-
-#: src\ui\PixelTransferController.js:170
-msgid "Just for verified Users"
-msgstr ""
-
-#: src\ui\PixelTransferController.js:172
-msgid "Only verified Users are currently allowed to play."
-msgstr ""
-
-#: src\ui\PixelTransferController.js:175
-msgid "Weird"
-msgstr ""
-
-#: src\ui\PixelTransferController.js:176
-msgid "Couldn't set Pixel"
-msgstr ""
-
-#: src\ui\PixelTransferController.js:181
+#: src\store\actions\fetch.js:228
 #, javascript-format
-msgid "Error ${ retCode }"
+msgid "Connection error ${ code } :("
 msgstr ""
 
-#: src\ui\templateLoader.js:230
-#: src\ui\templateLoader.js:256
-msgid "Error :("
+#: src\store\actions\fetch.js:335
+#: src\store\actions\fetch.js:354
+#: src\store\actions\fetch.js:373
+#: src\store\actions\fetch.js:392
+#: src\store\actions\fetch.js:411
+msgid "Unknown Error"
 msgstr ""
 
-#: src\ui\templateLoader.js:231
-msgid "Can not export more than 20 or no template!"
+#: src\store\actions\fetch.js:421
+msgid "Server answered with gibberish :("
 msgstr ""
 
-#: src\ui\templateLoader.js:257
-msgid "Can not import more than 20 or no template!"
+#: src\components\ChatMessage.jsx:149
+msgid "deleted by"
 msgstr ""
 
-#: src\store\actions\index.js:9
-msgid "OK"
+#: src\components\contextmenus\UserContextMenu.jsx:93
+msgid "View Profile"
 msgstr ""
 
-#: src\store\actions\index.js:21
-msgid "Change Happened"
+#: src\components\contextmenus\UserContextMenu.jsx:107
+msgid "Ping"
 msgstr ""
 
-#: src\store\actions\index.js:21
-msgid "Please refresh the website"
+#: src\components\contextmenus\UserContextMenu.jsx:133
+msgid "DM"
 msgstr ""
 
-#: src\store\actions\index.js:440
-msgid "Phish!"
+#: src\components\contextmenus\UserContextMenu.jsx:145
+msgid "Delete message"
 msgstr ""
 
-#: src\store\actions\index.js:442
-#, javascript-format
-msgid ""
-"You caught a Phish! It is a ${ FISH_TYPES[type].name } with ${ size }kg! As "
-"a bonus, your cooldown is reduced."
-msgstr ""
-
-#: src\store\actions\index.js:447
-msgid "No Phish!"
-msgstr ""
-
-#: src\store\actions\index.js:448
-msgid "Oh no, the phish escaped. Better luck next time!"
-msgstr ""
-
-#: src\store\actions\thunks.js:236
-msgid "Pencil picks: "
-msgstr ""
-
-#: src\store\actions\thunks.js:239
-msgid "Selected Color"
-msgstr ""
-
-#: src\store\actions\thunks.js:242
-msgid "From Template"
-msgstr ""
-
-#: src\store\actions\thunks.js:245
-msgid "From History"
+#: src\components\contextmenus\UserContextMenu.jsx:157
+msgid "Block"
 msgstr ""

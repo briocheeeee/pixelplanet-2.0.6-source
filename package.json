@@ -17,6 +17,7 @@
   "main": "server.js",
   "scripts": {
     "dev": "pm2 kill && npm run build -- --langs en && timeout 3 && cd dist && npm run start",
+    "devall": "pm2 kill && npm run build && timeout 3 && cd dist && npm run start",
     "build": "node scripts/build.js",
     "build:server": "node scripts/build.js --server",
     "build:client": "node scripts/build.js --client",

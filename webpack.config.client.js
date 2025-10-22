@@ -6,10 +6,13 @@ import fs from 'fs';
 import path from 'path';
 import process from 'process';
 import webpack from 'webpack';
+import os from 'os';
 import TerserPlugin from 'terser-webpack-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import sourceMapping from './scripts/sourceMapping.js';
 import LicenseListWebpackPlugin from './scripts/LicenseListWebpackPlugin.cjs';
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
 
 const pkg = JSON.parse(
   fs.readFileSync(path.resolve(import.meta.dirname, './package.json')),
@@ -45,12 +48,58 @@ export default ({
     ['ttag', ttag],
   ];
 
+  let useEsbuildMinify = false;
+  let ESBuildMinifyPlugin;
+  try {
+    const mod = require('esbuild-loader');
+    ESBuildMinifyPlugin = mod.ESBuildMinifyPlugin || (mod.default && mod.default.ESBuildMinifyPlugin);
+    if (ESBuildMinifyPlugin) useEsbuildMinify = true;
+  } catch (e) {
+    useEsbuildMinify = false;
+  }
+
+  const hasThreadLoader = fs.existsSync(path.resolve('node_modules', 'thread-loader'));
+  let hasEsbuildTranspile = false;
+  try {
+    require.resolve('esbuild-loader');
+    hasEsbuildTranspile = true;
+  } catch (e) {
+    hasEsbuildTranspile = false;
+  }
+  const jsLoaders = [];
+  if (hasThreadLoader && !hasEsbuildTranspile) {
+    jsLoaders.push({
+      loader: 'thread-loader',
+      options: {
+        workers: Math.max(1, (os.cpus && os.cpus().length) ? os.cpus().length - 1 : 2),
+      },
+    });
+  }
+  jsLoaders.push({
+    loader: 'babel-loader',
+    options: {
+      plugins: babelPlugins,
+      cacheDirectory: true,
+      cacheCompression: false,
+    },
+  });
+  if (hasEsbuildTranspile) {
+    jsLoaders.push({
+      loader: 'esbuild-loader',
+      options: {
+        loader: 'jsx',
+        target: 'es2018',
+      },
+    });
+  }
+  jsLoaders.push(path.resolve('scripts', 'TtagNonCacheableLoader.js'));
+
   return {
     name: 'client',
     target: 'web',
 
     mode: (development) ? 'development' : 'production',
-    devtool: (development) ? 'source-map' : false,
+    devtool: (development) ? 'eval-cheap-module-source-map' : false,
 
     entry: {
       client:
@@ -71,6 +120,14 @@ export default ({
       chunkFilename: `[name].${locale}.[chunkhash:8].js`,
     },
 
+    cache: {
+      type: 'filesystem',
+      name: `client-${locale}-${development ? 'dev' : 'prod'}`,
+      buildDependencies: {
+        config: [path.resolve(import.meta.dirname, 'webpack.config.client.js')],
+      },
+    },
+
     resolve: {
       alias: {
         /*
@@ -84,6 +141,7 @@ export default ({
         three: path.resolve('node_modules', 'three'),
       },
       extensions: ['.js', '.jsx'],
+      symlinks: false,
     },
 
     module: {
@@ -112,15 +170,7 @@ export default ({
         },
         {
           test: /\.(js|jsx)$/,
-          use: [
-            {
-              loader: 'babel-loader',
-              options: {
-                plugins: babelPlugins,
-              },
-            },
-            path.resolve('scripts', 'TtagNonCacheableLoader.js'),
-          ],
+          use: jsLoaders,
           include: [
             path.resolve('src'),
             ...['image-q'].map((moduleName) => (
@@ -140,68 +190,57 @@ export default ({
         'process.env.PKG_NAME': `"${pkg.name}"`,
         'process.env.PKG_VERSION': `"${pkg.version}"`,
       }),
-      // Output license informations
-      new LicenseListWebpackPlugin({
-        name: 'Client Scripts',
-        htmlFilename: 'index.html',
-        outputDir: path.join('..', 'legal'),
-        includeLicenseFiles: true,
-        override: sourceMapping,
-        /*
-         * build a second summarized html output,
-         * because LibreJS doesn't understand this and we still want it
-         * TODO: replace it with the mergeByChunnkName option once LibreJS
-         *       supports it
-         */
-        processOutput: (out) => {
-          let secondOut = [...out].map((buildObj) => {
-            const newBuildObj = {
-              ...buildObj,
-              scripts: [],
-            }
-            buildObj.scripts.forEach((scriptObj) => {
-              let targetInd = newBuildObj.scripts.findIndex(
-                (s) => s.name === scriptObj.name,
-              );
-              if (targetInd === -1) {
-                newBuildObj.scripts.push({ ...scriptObj, url: null });
-              } else {
-                newBuildObj.scripts[targetInd] = LicenseListWebpackPlugin
-                  .deepMergeNamedArrays(
-                    newBuildObj.scripts[targetInd],
-                    { ...scriptObj, url: null },
-                   );
+      ...(!development ? [
+        new LicenseListWebpackPlugin({
+          name: 'Client Scripts',
+          htmlFilename: 'index.html',
+          outputDir: path.join('..', 'legal'),
+          includeLicenseFiles: true,
+          override: sourceMapping,
+          processOutput: (out) => {
+            let secondOut = [...out].map((buildObj) => {
+              const newBuildObj = {
+                ...buildObj,
+                scripts: [],
               }
+              buildObj.scripts.forEach((scriptObj) => {
+                let targetInd = newBuildObj.scripts.findIndex(
+                  (s) => s.name === scriptObj.name,
+                );
+                if (targetInd === -1) {
+                  newBuildObj.scripts.push({ ...scriptObj, url: null });
+                } else {
+                  newBuildObj.scripts[targetInd] = LicenseListWebpackPlugin
+                    .deepMergeNamedArrays(
+                      newBuildObj.scripts[targetInd],
+                      { ...scriptObj, url: null },
+                    );
+                }
+              });
+              return newBuildObj;
             });
-            return newBuildObj;
-          });
-          secondOut = LicenseListWebpackPlugin.summarizeOutput(secondOut);
-          secondOut = LicenseListWebpackPlugin.generateHTML(secondOut);
-          fs.writeFileSync(
-            path.resolve('dist', 'public', 'legal', 'summarized.html'),
-            secondOut,
-          );
-          return out;
-        },
-      }),
+            secondOut = LicenseListWebpackPlugin.summarizeOutput(secondOut);
+            secondOut = LicenseListWebpackPlugin.generateHTML(secondOut);
+            fs.writeFileSync(
+              path.resolve('dist', 'public', 'legal', 'summarized.html'),
+              secondOut,
+            );
+            return out;
+          },
+        })
+      ] : []),
       // Webpack Bundle Analyzer
       // https://github.com/th0r/webpack-bundle-analyzer
       ...analyze ? [new BundleAnalyzerPlugin({ analyzerPort: 8889 })] : [],
     ],
 
     optimization: {
-      splitChunks: {
+      splitChunks: development ? false : {
         chunks: 'all',
         name: false,
         cacheGroups: {
           default: false,
           defaultVendors: false,
-
-          /*
-           * this layout of chunks is also assumed in src/core/assets.js
-           * client -> client.js + vendor.js
-           * globe -> globe.js + three.js
-           */
           vendor: {
             name: 'vendor',
             chunks: (chunk) => chunk.name.startsWith('client'),
@@ -216,21 +255,32 @@ export default ({
       },
       ...(development ? {} : {
         minimizer: [
-          new TerserPlugin({
-            terserOptions: {
-              compress: {
-                drop_console: true,
-                pure_funcs: [
-                  'console.log',
-                  'console.info',
-                  'console.warn',
-                  'console.error',
-                  'console.debug',
-                ],
+          ...(useEsbuildMinify ? [
+            new ESBuildMinifyPlugin({
+              target: 'es2018',
+              legalComments: 'none',
+              css: true,
+              keepNames: true,
+              drop: ['console'],
+            }),
+          ] : [
+            new TerserPlugin({
+              parallel: true,
+              terserOptions: {
+                compress: {
+                  drop_console: true,
+                  pure_funcs: [
+                    'console.log',
+                    'console.info',
+                    'console.warn',
+                    'console.error',
+                    'console.debug',
+                  ],
+                },
+                keep_fnames: true,
               },
-              keep_fnames: true,
-            },
-          }),
+            }),
+          ]),
         ],
       }),
     },

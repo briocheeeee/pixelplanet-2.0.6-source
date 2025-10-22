@@ -7,6 +7,7 @@ import path from 'path';
 import fs from 'fs';
 import readline from 'readline';
 import { spawn } from 'child_process';
+import os from 'os';
 import webpack from 'webpack';
 import validate from 'ttag-cli/dist/src/commands/validate.js';
 
@@ -58,6 +59,9 @@ for (let i = 0; i < process.argv.length; i += 1) {
     default:
       // nothing
   }
+}
+if (langs === 'all') {
+  parallel = true;
 }
 if (!doBuildServer && !doBuildClient) {
   doBuildServer = true;
@@ -156,9 +160,14 @@ function validateLangs(langs) {
   for (const lang of langs) {
     const langFiles = [`${lang}.po`, `ssr-${lang}.po`];
     for (const langFile of langFiles) {
-      process.stdout.clearLine(0);
-      process.stdout.cursorTo(0);
-      process.stdout.write(`i18n/${langFile} `);
+      const canTTY = process.stdout && process.stdout.isTTY && typeof process.stdout.clearLine === 'function' && typeof process.stdout.cursorTo === 'function';
+      if (canTTY) {
+        process.stdout.clearLine(0);
+        process.stdout.cursorTo(0);
+        process.stdout.write(`i18n/${langFile} `);
+      } else {
+        console.log(`i18n/${langFile}`);
+      }
       const filePath = path.join(langDir, langFile);
       if (!fs.existsSync(filePath)) {
         continue;
@@ -170,8 +179,11 @@ function validateLangs(langs) {
       }
     }
   }
-  process.stdout.clearLine(0);
-  process.stdout.cursorTo(0);
+  const canTTY = process.stdout && process.stdout.isTTY && typeof process.stdout.clearLine === 'function' && typeof process.stdout.cursorTo === 'function';
+  if (canTTY) {
+    process.stdout.clearLine(0);
+    process.stdout.cursorTo(0);
+  }
   return brokenLangs;
 }
 
@@ -184,7 +196,9 @@ function cleanUpBeforeBuild(doBuildServer, doBuildClient) {
   if (!fs.existsSync(distDir)) fs.mkdirSync(distDir);
   // remove files we need to regenerate
   const webpackCachePath = path.join(parentDir, 'node_modules', '.cache', 'webpack');
-  fs.rmSync(webpackCachePath, { recursive: true, force: true });
+  if (process.env.PP_CLEAN_CACHE === '1') {
+    fs.rmSync(webpackCachePath, { recursive: true, force: true });
+  }
   if (doBuildClient && doBuildServer) {
     const assetPath = path.join(distDir, 'public', 'assets');
     fs.rmSync(assetPath, { recursive: true, force: true });
@@ -206,13 +220,23 @@ function cleanUpBeforeBuild(doBuildServer, doBuildClient) {
       path.join('src', 'canvases.json'),
       path.join('deployment', 'ecosystem.yml'),
       path.join('deployment', 'ecosystem-backup.yml'),
-      path.join('deployment', 'config.ini'),
     ].forEach((f) => {
       fs.copyFileSync(
         path.join(parentDir, f),
         path.join(distDir, path.basename(f)),
       );
     });
+    const configCandidates = [
+      path.join(parentDir, 'overrides', 'config.ini'),
+      path.join(parentDir, 'config.ini'),
+      path.join(parentDir, 'deployment', 'config.ini'),
+    ];
+    const srcConfig = configCandidates.find((p) => fs.existsSync(p));
+    if (srcConfig) {
+      fs.copyFileSync(srcConfig, path.join(distDir, 'config.ini'));
+    } else {
+      console.warn('No config.ini found; using defaults');
+    }
     // copy folder to dist directory
     const dirsToDirectlyCopy = ['public', 'doc'];
     if (!fs.existsSync(path.join(parentDir, 'overrides', 'captchaFonts'))) {
@@ -316,8 +340,9 @@ function buildServer() {
 
 function buildClients(slangs) {
   return new Promise((resolve, reject) => {
-    const clientCompile = spawn('npm', ['run', 'build', '--', '--client', '--recursion', '--langs', slangs.join(',')], {
-      shell: process.platform == 'win32',
+    const args = [path.resolve(__dirname, 'build.js'), '--client', '--recursion', '--langs', slangs.join(',')];
+    const clientCompile = spawn(process.execPath, args, {
+      shell: false,
     });
     clientCompile.stdout.on('data', (data) => {
       console.log(data.toString());
@@ -351,9 +376,17 @@ async function buildClientsSync(avlangs) {
 
 function buildClientsParallel(avlangs) {
   const st = Date.now();
-  const numProc = 3;
-  let nump = Math.floor(avlangs.length / numProc);
-  if (!nump) nump = 1;
+  const total = avlangs.length;
+  const cpuCount = (os.cpus && os.cpus().length) ? os.cpus().length : 4;
+  const envConc = parseInt(process.env.PP_BUILD_CONCURRENCY || '', 10);
+  const computed = Math.max(1, Math.min(cpuCount - 1, total));
+  const fast = process.env.PP_BUILD_FAST === '1' || process.env.PP_FAST === '1';
+  const defaultCap = fast ? 8 : 4;
+  const safeDefault = Math.min(defaultCap, computed);
+  const numProc = Number.isFinite(envConc)
+    ? Math.max(1, Math.min(envConc, total))
+    : safeDefault;
+  let nump = Math.ceil(total / numProc);
 
   const promises = [];
   while (avlangs.length >= nump) {
@@ -364,6 +397,17 @@ function buildClientsParallel(avlangs) {
     promises.push(buildClientsSync(avlangs));
   }
   return Promise.all(promises);
+}
+
+function buildClientsMulti(avlangs) {
+  const cfgs = avlangs.map((lang) => clientConfig({
+    development,
+    analyze: false,
+    extract: false,
+    locale: lang,
+    readonly: false,
+  }));
+  return compile(cfgs);
 }
 
 async function build() {
@@ -412,39 +456,51 @@ async function build() {
   const promises = [];
 
   if (doBuildServer) {
-    promises.push(buildServer());
+    const skipServer = process.env.PP_SKIP_SERVER === '1';
+    const distServer = path.resolve(__dirname, '..', 'dist', 'server.js');
+    if (skipServer) {
+      if (fs.existsSync(distServer)) {
+        console.log('Skipping server build (PP_SKIP_SERVER=1)');
+      } else {
+        console.log('PP_SKIP_SERVER=1 but no dist/server.js found; building server once...');
+        promises.push(buildServer());
+      }
+    } else {
+      promises.push(buildServer());
+    }
   }
 
   if (doBuildClient) {
-    if (!recursion) {
+    if (!recursion && !(parallel && (process.env.PP_BUILD_FAST === '1' || process.env.PP_BUILD_MULTICOMPILER === '1') && development)) {
       console.log('Building one client package...');
       await compile(clientConfig({
         development,
         analyze: false,
-        extract: (langs === 'all'),
+        extract: (!development && (langs === 'all')),
         locale: avlangs.shift(),
         readonly: false,
       }));
 
-      console.log('-----------------------------');
-      console.log(`Minify CSS assets...`);
-      console.log('-----------------------------');
-      await minifyCss();
+      if (!development) {
+        console.log('-----------------------------');
+        console.log(`Minify CSS assets...`);
+        console.log('-----------------------------');
+        await minifyCss();
 
-      if (doBuildServer) {
-        /*
-         * server copies files into ./dist/public, it
-         * is needed for creating images
-         */
+        if (doBuildServer) {
+          console.log('-----------------------------');
+          console.log(`Creating Images...`);
+          console.log('-----------------------------');
+          await createImages();
+        }
         console.log('-----------------------------');
-        console.log(`Creating Images...`);
-        console.log('-----------------------------');
-        await createImages();
       }
-      console.log('-----------------------------');
     }
 
-    if (parallel) {
+    const preferMulti = process.env.PP_BUILD_FAST === '1' || process.env.PP_BUILD_MULTICOMPILER === '1';
+    if (!recursion && parallel && preferMulti) {
+      promises.push(buildClientsMulti(avlangs));
+    } else if (parallel) {
       promises.push(buildClientsParallel(avlangs));
     } else {
       promises.push(buildClientsSync(avlangs));

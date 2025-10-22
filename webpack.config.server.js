@@ -6,6 +6,7 @@ import fs from 'fs';
 import path from 'path';
 import process from 'process';
 import webpack from 'webpack';
+import os from 'os';
 import GeneratePackageJsonPlugin from 'generate-package-json-webpack-plugin';
 import LicenseListWebpackPlugin from './scripts/LicenseListWebpackPlugin.cjs';
 import sourceMapping from './scripts/sourceMapping.js';
@@ -83,6 +84,24 @@ export default ({
       scriptsEntries[name] = fullPath;
     });
 
+  const hasThreadLoader = fs.existsSync(path.resolve('node_modules', 'thread-loader'));
+  const jsLoaders = [];
+  if (hasThreadLoader) {
+    jsLoaders.push({
+      loader: 'thread-loader',
+      options: {
+        workers: Math.max(1, (os.cpus && os.cpus().length) ? os.cpus().length - 1 : 2),
+      },
+    });
+  }
+  jsLoaders.push({
+    loader: 'babel-loader',
+    options: {
+      cacheDirectory: true,
+      plugins: babelPlugins,
+    },
+  });
+
   return {
     name: 'server',
     target: 'node',
@@ -108,14 +127,10 @@ export default ({
       rules: [
         {
           test: /\.(js|jsx)$/,
-          loader: 'babel-loader',
+          use: jsLoaders,
           include: [
             path.resolve('src'),
           ],
-          options: {
-            cacheDirectory: false,
-            plugins: babelPlugins,
-          },
         },
         {
           test: [/\.po$/],
@@ -197,6 +212,10 @@ export default ({
       global: false,
       __dirname: false,
       __filename: false,
+    },
+
+    cache: {
+      type: 'filesystem',
     },
   };
 };
