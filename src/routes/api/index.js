@@ -1,6 +1,7 @@
 import express from 'express';
 
 import { verifySession, ensureLoggedIn } from '../../middleware/session.js';
+import originGuard from '../../middleware/originGuard.js';
 
 import me from './me.js';
 import auth from './auth/index.js';
@@ -43,6 +44,8 @@ router.get('/getiid', getiid);
  * get user session if available
  */
 router.use(verifySession);
+
+router.use(originGuard);
 
 router.get('/chathistory', chatHistory);
 

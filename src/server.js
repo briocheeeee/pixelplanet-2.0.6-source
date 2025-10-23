@@ -6,6 +6,7 @@ import url from 'url';
 import compression from 'compression';
 import express from 'express';
 import http from 'http';
+import helmet from 'helmet';
 
 import forceGC from './core/forceGC.js';
 import logger from './core/logger.js';
@@ -32,6 +33,14 @@ import startAllCanvasLoops from './core/tileserver.js';
 
 const app = express();
 app.disable('x-powered-by');
+app.set('trust proxy', true);
+
+const helmetOptions = { contentSecurityPolicy: false, crossOriginEmbedderPolicy: false };
+if (process.env.NODE_ENV !== 'production') { helmetOptions.hsts = false; }
+app.use(helmet(helmetOptions));
+
+app.use(express.json({ limit: '100kb' }));
+app.use(express.urlencoded({ extended: false, limit: '50kb' }));
 
 
 // Call Garbage Collector every 30 seconds
@@ -39,6 +48,9 @@ setInterval(forceGC, 10 * 60 * SECOND);
 
 // create http server
 const server = http.createServer(app);
+server.headersTimeout = 65000;
+server.requestTimeout = 60000;
+server.keepAliveTimeout = 5000;
 
 //
 // websockets

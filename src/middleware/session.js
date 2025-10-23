@@ -124,7 +124,7 @@ export class User {
  */
 async function resolveSessionOfRequest(req) {
   const cookies = parseCookie(req.headers.cookie || '');
-  const token = cookies['ppfun.session'];
+  const token = cookies['__Host-ppfun.session'] || cookies['ppfun.session'];
   const userData = await resolveSession(token);
   if (!userData) {
     delete req.user;
@@ -200,7 +200,14 @@ export async function openSession(req, res, userId, durationHours = 720) {
   }
   req.user = new User(userData, token);
 
-  const cookieOptions = { domain, httpOnly: true, secure: false };
+  const isSecure = !!(req.secure || req.headers['x-forwarded-proto'] === 'https');
+  const cookieOptions = {
+    domain,
+    httpOnly: true,
+    secure: isSecure,
+    sameSite: 'lax',
+    path: '/',
+  };
 
   if (durationHours === null) {
     /* a permanent cookie is just a cookie that expires really late */
@@ -215,6 +222,14 @@ export async function openSession(req, res, userId, durationHours = 720) {
   }
 
   res.cookie('ppfun.session', token, cookieOptions);
+  if (isSecure) {
+    res.cookie('__Host-ppfun.session', token, {
+      httpOnly: true,
+      secure: true,
+      sameSite: 'lax',
+      path: '/',
+    });
+  }
   return true;
 }
 
@@ -225,8 +240,19 @@ export function clearCookie(req, res) {
     domain = domain.substring(0, portSeperator);
   }
 
+  const isSecure = !!(req.secure || req.headers['x-forwarded-proto'] === 'https');
   res.clearCookie('ppfun.session', {
-    domain, httpOnly: true, secure: false,
+    domain,
+    httpOnly: true,
+    secure: isSecure,
+    sameSite: 'lax',
+    path: '/',
+  });
+  res.clearCookie('__Host-ppfun.session', {
+    httpOnly: true,
+    secure: true,
+    sameSite: 'lax',
+    path: '/',
   });
 }
 
@@ -238,7 +264,7 @@ export function clearCookie(req, res) {
  */
 export async function closeSession(req, res) {
   const cookies = parseCookie(req.headers.cookie || '');
-  const token = cookies['ppfun.session'];
+  const token = cookies['__Host-ppfun.session'] || cookies['ppfun.session'];
   const success = await removeSession(token);
   clearCookie(req, res);
   delete req.user;

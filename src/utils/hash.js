@@ -10,7 +10,7 @@ import { createHash, randomBytes } from 'crypto';
  */
 
 export function generateHash(password) {
-  return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
+  return bcrypt.hashSync(password, bcrypt.genSaltSync(12), null);
 }
 
 export function compareToHash(password, hash) {
