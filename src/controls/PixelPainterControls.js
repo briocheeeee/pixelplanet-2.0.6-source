@@ -228,12 +228,22 @@ class PixelPainterControls {
       const px = x + dx;
       const py = y + dy;
       if (px < -maxCoords || px >= maxCoords || py < -maxCoords || py >= maxCoords) continue;
+
+      let targetColor = selectedColor;
+      if (state.gui.holdPaint && state.canvas.pencilMode === PENCIL_MODE.OVERLAY) {
+        const perPixelColor = PixelPainterControls.getWantedColor(state, renderer, [px, py]);
+        if (perPixelColor === null) {
+          continue;
+        }
+        targetColor = perPixelColor;
+      }
+
       const curColor = renderer.getColorIndexOfPixel(px, py);
-      if (selectedColor === curColor) continue;
-      if (selectedColor < state.canvas.clrIgnore) {
+      if (targetColor === curColor) continue;
+      if (targetColor < state.canvas.clrIgnore) {
         const { palette } = state.canvas;
         const { rgb } = palette;
-        let clrOffset = selectedColor * 3;
+        let clrOffset = targetColor * 3;
         const r = rgb[clrOffset++];
         const g = rgb[clrOffset++];
         const b = rgb[clrOffset];
@@ -243,7 +253,7 @@ class PixelPainterControls {
       const offset = getOffsetOfPixel(canvasSize, px, py);
       pixelTransferController.tryPlacePixel(
         i, j, offset,
-        selectedColor,
+        targetColor,
         curColor,
       );
     }

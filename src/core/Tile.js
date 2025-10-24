@@ -18,6 +18,13 @@ import Palette from './Palette.js';
 import { getMaxTiledZoom } from './utils.js';
 import { TILE_SIZE, TILE_ZOOM_LEVEL } from './constants.js';
 
+function ensureDir(file) {
+  const dir = path.dirname(file);
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir, { recursive: true });
+  }
+}
+
 /*
  * Deletes a subtile from a tile (paints it in color 0),
  * if we wouldn't do it, it would be black
@@ -334,6 +341,7 @@ export async function createZoomTileFromChunk(
     });
 
     try {
+      ensureDir(filename);
       await sharp(tileRGBBuffer, {
         raw: {
           width: TILE_SIZE * TILE_ZOOM_LEVEL,
@@ -427,6 +435,7 @@ export async function createZoomedTile(
     });
 
     try {
+      ensureDir(filename);
       await sharp(tileRGBBuffer, {
         raw: {
           width: TILE_SIZE,

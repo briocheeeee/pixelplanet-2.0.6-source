@@ -5,7 +5,7 @@ import { t } from 'ttag';
 import WindowContext from '../context/window.js';
 import { requestUserPublicProfile } from '../../store/actions/fetch.js';
 import { FISH_TYPES } from '../../core/constants.js';
-import { setBrightness, colorFromText, numberToString, escapeMd } from '../../core/utils.js';
+import { setBrightness, colorFromText, numberToString, numberToStringFull, escapeMd } from '../../core/utils.js';
 import { cdn } from '../../utils/utag.js';
 import { openChatWindow, openWindow } from '../../store/actions/windows.js';
 import { startDm } from '../../store/actions/thunks.js';
@@ -220,8 +220,8 @@ const UserProfile = () => {
           <div style={{ padding: '2px 0 8px 0' }}>
             <p className="fishlist" style={{ marginBottom: 6 }}><span className="stattext">{t`Overview`}:</span></p>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 6, justifyItems: 'center' }}>
-              <p style={{ margin: 0, textAlign: 'center' }}><span className="stattext">{t`Placed Pixels`}: </span>&nbsp;<span className="statvalue">{numberToString(stats.totalPixels)}</span></p>
-              <p style={{ margin: 0, textAlign: 'center' }}><span className="stattext">{t`Today Placed Pixels`}: </span>&nbsp;<span className="statvalue">{numberToString(stats.dailyTotalPixels)}</span></p>
+              <p style={{ margin: 0, textAlign: 'center' }}><span className="stattext">{t`Placed Pixels`}: </span>&nbsp;<span className="statvalue">{numberToStringFull(stats.totalPixels)}</span></p>
+              <p style={{ margin: 0, textAlign: 'center' }}><span className="stattext">{t`Today Placed Pixels`}: </span>&nbsp;<span className="statvalue">{numberToStringFull(stats.dailyTotalPixels)}</span></p>
               <p style={{ margin: 0, textAlign: 'center' }}><span className="stattext">{t`Total Rank`}: #</span>&nbsp;<span className="statvalue">{numberToString(stats.ranking, 'N/A')}</span></p>
               <p style={{ margin: 0, textAlign: 'center' }}><span className="stattext">{t`Daily Rank`}: #</span>&nbsp;<span className="statvalue">{numberToString(stats.dailyRanking, 'N/A')}</span></p>
             </div>
