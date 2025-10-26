@@ -68,6 +68,7 @@ let config = {};
     ['BACKUP_CMD', 'string', null],
     ['BACKUP_INTERVAL', 'int', 30],
     ['RATE_LIMIT_CMD', 'string', null],
+    ['IMGBB_API_KEY', 'string', null],
   ];
 
   const configFileValues = {};
@@ -232,6 +233,7 @@ export const {
   BACKUP_CMD,
   BACKUP_INTERVAL,
   RATE_LIMIT_CMD,
+  IMGBB_API_KEY,
 } = config;
 
 config = null;

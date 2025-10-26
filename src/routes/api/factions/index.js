@@ -28,6 +28,7 @@ import {
 import { addFactionToRanks } from '../../../data/redis/factions.js';
 import { getNamesToIds, findUserById } from '../../../data/sql/User.js';
 import { compareToHash } from '../../../utils/hash.js';
+import { IMGBB_API_KEY } from '../../../core/config.js';
 
 const router = express.Router();
 
@@ -448,21 +449,28 @@ router.post('/avatar', ensureOwner, async (req, res) => {
   if (!fid) { res.status(403).json({ errors: ['not in faction'] }); return; }
   const f = await Faction.findByPk(fid, { raw: true });
   if (!f || f.ownerId !== user.id) { res.status(403).json({ errors: ['forbidden'] }); return; }
-  const tmpDir = path.join(os.tmpdir(), 'pp_favatars');
-  try { fs.mkdirSync(tmpDir, { recursive: true }); } catch {}
+  if (!IMGBB_API_KEY) { res.status(503).json({ errors: ['image hosting unavailable'] }); return; }
   const sharp = (await import('sharp')).default;
   let buffer = Buffer.from([]);
   req.on('data', (chunk) => { buffer = Buffer.concat([buffer, chunk]); });
   req.on('end', async () => {
     try {
-      const img = sharp(buffer);
-      const destDir = path.join(process.cwd(), 'public', 'favatars');
-      try { fs.mkdirSync(destDir, { recursive: true }); } catch {}
-      const dest = path.join(destDir, `${fid}.webp`);
-      await img.rotate().resize({ width: 256, height: 256, fit: 'cover' }).webp({ quality: 82 }).toFile(dest);
-      const publicPath = `/favatars/${fid}.webp`;
-      await Faction.update({ avatar: publicPath }, { where: { id: fid } });
-      res.json({ status: 'ok', avatar: publicPath, version: Date.now() });
+      const out = await sharp(buffer).rotate().resize({ width: 256, height: 256, fit: 'cover' }).webp({ quality: 82 }).toBuffer();
+      const params = new URLSearchParams();
+      params.set('key', IMGBB_API_KEY);
+      params.set('image', out.toString('base64'));
+      params.set('name', `faction_${fid}`);
+      const upres = await fetch('https://api.imgbb.com/1/upload', { method: 'POST', body: params });
+      let url = null;
+      try {
+        const j = await upres.json();
+        if (j && j.success && j.data) {
+          url = j.data.display_url || j.data.url || null;
+        }
+      } catch {}
+      if (!upres.ok || !url) { res.status(500).json({ errors: ['upload failed'] }); return; }
+      await Faction.update({ avatar: url }, { where: { id: fid } });
+      res.json({ status: 'ok', avatar: url, version: Date.now() });
     } catch {
       res.status(500).json({ errors: ['upload failed'] });
     }

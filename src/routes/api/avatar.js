@@ -6,6 +6,7 @@ import os from 'os';
 
 import sequelize from '../../data/sql/sequelize.js';
 import socketEvents from '../../socket/socketEvents.js';
+import { IMGBB_API_KEY } from '../../core/config.js';
 
 const router = express.Router();
 // simple in-process lock to serialize uploads per user
@@ -172,33 +173,48 @@ router.post('/', async (req, res) => {
     }
   }
 
-  // deterministic filename to crush previous avatar
-  const optimizedExt = (sharp) ? '.webp' : safeExt;
-  const filename = `${user.id}${optimizedExt}`;
-  const dest = path.join(baseDir, filename);
+  if (!IMGBB_API_KEY) {
+    activeUploads.delete(user.id);
+    try { if (file.tempFilePath) fs.unlinkSync(file.tempFilePath); } catch {}
+    res.status(503).json({ errors: ['image hosting unavailable'] });
+    return;
+  }
 
   try {
-    if (sharp && sharpInput) {
-      // auto-rotate, resize to square and convert to webp for speed
-      await sharp(sharpInput)
-        .rotate()
-        .resize({ width: 256, height: 256, fit: 'cover' })
-        .webp({ quality: 82 })
-        .toFile(dest);
+    const out = await sharp(sharpInput)
+      .rotate()
+      .resize({ width: 256, height: 256, fit: 'cover' })
+      .webp({ quality: 82 })
+      .toBuffer();
+
+    const params = new URLSearchParams();
+    params.set('key', IMGBB_API_KEY);
+    params.set('image', out.toString('base64'));
+    params.set('name', String(user.id));
+
+    const upres = await fetch('https://api.imgbb.com/1/upload', { method: 'POST', body: params });
+    let url = null;
+    try {
+      const j = await upres.json();
+      if (j && j.success && j.data) {
+        url = j.data.display_url || j.data.url || null;
+      }
+    } catch {}
+    if (!upres.ok || !url) {
+      res.status(500).json({ errors: ['upload failed'] });
+      return;
     }
-    const publicPath = `/avatars/${filename}`;
+
     await sequelize.query('UPDATE Users SET avatar = ? WHERE id = ?', {
-      replacements: [publicPath, user.id],
+      replacements: [url, user.id],
     });
     try {
       if (req.user && req.user.data) {
-        req.user.data.avatar = publicPath;
+        req.user.data.avatar = url;
       }
       socketEvents.reloadUser(user.id, false);
-    } catch (e) {
-      // ignore reload errors
-    }
-    res.status(200).json({ status: 'ok', avatar: publicPath, version: Date.now(), message: 'avatar updated' });
+    } catch (e) {}
+    res.status(200).json({ status: 'ok', avatar: url, version: Date.now(), message: 'avatar updated' });
   } catch (e) {
     res.status(500).json({ errors: ['could not save avatar'] });
   }
